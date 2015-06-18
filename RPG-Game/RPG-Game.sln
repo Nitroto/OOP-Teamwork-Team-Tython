@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diablo-0.5", "Diablo-0.5\Diablo-0.5.csproj", "{6DA77CA8-D4C4-4D9C-A961-5121E1D83A3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diablo", "Diablo-0.5\Diablo.csproj", "{6DA77CA8-D4C4-4D9C-A961-5121E1D83A3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
