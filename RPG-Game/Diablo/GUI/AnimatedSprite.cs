@@ -13,22 +13,22 @@ namespace Diablo.GUI
         private double timeElapsed;
         private double timeToUpdate;
         protected Vector2 sDirection = Vector2.Zero;
-        private Dictionary<string, Rectangle[]> sAnimations = new Dictionary<string, Rectangle[]>();
-        private string currentAnimation;
+        private Dictionary<AnimationType, Rectangle[]> sAnimations = new Dictionary<AnimationType, Rectangle[]>();
+        protected AnimationType currentAnimation;
 
         protected AnimatedSprite(Vector2 position)
         {
             this.sPosition = position;
         }
 
-        public void AddAnimation(int frames, int yPos, int xStartFrama, string name, int width, int height, Vector2 offset)
+        public void AddAnimation(int frames, int yPos, int xStartFrama, AnimationType direction, int width, int height, Vector2 offset)
         {
             Rectangle[] rectangles = new Rectangle[frames];
             for (int i = 0; i < frames; i++)
             {
                 rectangles[i] = new Rectangle((i+xStartFrama)*width,yPos,width,height);
             }
-            this.sAnimations.Add(name, rectangles);
+            this.sAnimations.Add(direction, rectangles);
 
         }
 
@@ -56,11 +56,11 @@ namespace Diablo.GUI
                 }
             }
         }
-        public void PlayAnimation(string name)
+        public void PlayAnimation(AnimationType direction)
         {
-            if (this.currentAnimation != name)
+            if (this.currentAnimation != direction)
             {
-                this.currentAnimation = name;
+                this.currentAnimation = direction;
                 this.frameIndex = 0;
             }
         }

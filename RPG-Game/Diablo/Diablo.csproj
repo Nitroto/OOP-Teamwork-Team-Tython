@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="GUI\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
+    <Compile Include="GUI\Direction.cs" />
     <Compile Include="GUI\Player.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Program.cs" />
