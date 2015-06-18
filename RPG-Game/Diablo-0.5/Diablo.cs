@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Diablo.GUI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,6 +12,8 @@ namespace Diablo
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        Player player;
 
         public Diablo()
         {
@@ -41,6 +44,8 @@ namespace Diablo
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            player = new Player(new Vector2(100,100));
+            player.LoadContentent(Content);
         }
 
         /// <summary>
@@ -63,7 +68,7 @@ namespace Diablo
                 Exit();
 
             // TODO: Add your update logic here
-
+            player.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -76,7 +81,9 @@ namespace Diablo
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            player.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
