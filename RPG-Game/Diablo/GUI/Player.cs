@@ -52,21 +52,25 @@ namespace Diablo.GUI
             {
                 //move up
                 this.sDirection += new Vector2(0, -1);
+                this.PlayAnimation("Up");
             }
             if (keyState.IsKeyDown(Keys.A))
             {
                 //move left
                 this.sDirection += new Vector2(-1, 0);
+                this.PlayAnimation("Left");
             }
             if (keyState.IsKeyDown(Keys.S))
             {
                 //move down
                 this.sDirection += new Vector2(0, 1);
+                this.PlayAnimation("Down");
             }
             if (keyState.IsKeyDown(Keys.D))
             {
                 //move right
                 this.sDirection += new Vector2(1, 0);
+                this.PlayAnimation("Right");
             }
 
         }
