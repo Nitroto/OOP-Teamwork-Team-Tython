@@ -2,8 +2,8 @@
 {
     public interface ICharacter : IAttack
     {
-        int Mana { get; }
-        int Damage { get; }
-        int Health { get; }
+        int Mana { get; set; }
+        int Damage { get; set; }
+        int Health { get; set; }
     }
 }
