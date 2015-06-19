@@ -38,12 +38,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Characters\Barbarian.cs" />
+    <Compile Include="Characters\BaseCharacter.cs" />
     <Compile Include="GUI\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
     <Compile Include="GUI\Direction.cs" />
     <Compile Include="GUI\Player.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
+    <Compile Include="Interfaces\IHeal.cs" />
+    <Compile Include="Interfaces\IKillable.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
