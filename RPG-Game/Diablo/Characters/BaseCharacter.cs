@@ -6,7 +6,8 @@ namespace Diablo.Characters
 {
     public abstract class BaseCharacter : GameObject, ICharacter
     {
-        public List<Item> Items;
+        public List<Item> items;
+
 
         protected BaseCharacter(string name,int health,int damage, int mana)
         {
@@ -14,12 +15,14 @@ namespace Diablo.Characters
             this.Health = health;
             this.Damage = damage;
             this.Mana = mana;
-            Items = new List<Item>();
+            this.items = new List<Item>();
         }
+
 
         public int Health { get; set; }
         public int Mana { get; set; }
         public int Damage { get; set; }
+
 
         public void Attack(ICharacter enemy)
         {
@@ -39,7 +42,21 @@ namespace Diablo.Characters
             }
         }
 
+        public void ApplyItems(Item item)
+        {
+            this.items.Add(item);
+            this.Damage += item.Damage;
+            this.Health += item.Health;
+            this.Mana += item.Mana;
 
+        }
 
+        public void RemoveItems(Item item)
+        {
+            this.items.Remove(item);
+            this.Damage -= item.Damage;
+            this.Health -= item.Health;
+            this.Mana -= item.Mana;
+        }
     }
 }
