@@ -43,6 +43,7 @@
     <Compile Include="GameObject.cs" />
     <Compile Include="GUI\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
+    <Compile Include="GUI\AnimationsType.cs" />
     <Compile Include="GUI\Direction.cs" />
     <Compile Include="GUI\Player.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
@@ -67,7 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\res\barbarian\barbarian-movements.png">
+    <Content Include="Content\res\barbarian\barbarian.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />

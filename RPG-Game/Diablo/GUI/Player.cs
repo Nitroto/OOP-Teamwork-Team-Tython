@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -16,22 +17,26 @@ namespace Diablo.GUI
             : base(position)
         {
             this.FramesPerSecond = 12;
-            this.AddAnimation(8, 0, 0, AnimationType.Right, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, 96, 0, AnimationType.Left, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, 192, 0, AnimationType.Down, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, 288, 0, AnimationType.Up, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, 0, 0, AnimationType.IdleRight, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, 96, 0, AnimationType.IdleLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, 192, 0, AnimationType.IdleDown, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, 288, 0, AnimationType.IdleUp, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(8, (0 * FrameHeight), 0, AnimationType.MoveRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(8, (1 * FrameHeight), 0, AnimationType.MoveLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(8, (2 * FrameHeight), 0, AnimationType.MoveDown, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(8, (3 * FrameHeight), 0, AnimationType.MoveUp, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(11, (8 * FrameHeight), 0, AnimationType.AttackRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(11, (9 * FrameHeight), 0, AnimationType.AttackLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(11, (10 * FrameHeight), 0, AnimationType.AttackDown, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(11, (11 * FrameHeight), 0, AnimationType.AttackUp, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(1, (24 * FrameHeight), 0, AnimationType.IdleRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(1, (25 * FrameHeight), 0, AnimationType.IdleLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(1, (26 * FrameHeight), 0, AnimationType.IdleDown, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(1, (27 * FrameHeight), 0, AnimationType.IdleUp, FrameWidth, FrameHeight, new Vector2(0, 0));
 
 
-            this.PlayAnimation(AnimationType.Down);
+            this.PlayAnimation(AnimationType.IdleDown);
         }
 
         public void LoadContentent(ContentManager contentManager)
         {
-            this.sTexture = contentManager.Load<Texture2D>(@"res\barbarian\barbarian-movements.png");
+            this.sTexture = contentManager.Load<Texture2D>(@"res/barbarian/barbarian.png");
             //this.AddAnimation(8);
         }
         public override void Update(GameTime gameTime)
@@ -55,65 +60,84 @@ namespace Diablo.GUI
                 {
                     //move up
                     this.sDirection += new Vector2(0, -1);
-                    this.PlayAnimation(AnimationType.Up);
+                    this.PlayAnimation(AnimationType.MoveUp);
+                    this.currentDirection = Direction.Up;
                 }
                 if (keyState.IsKeyDown(Keys.A))
                 {
                     //move left
                     this.sDirection += new Vector2(-1, 0);
-                    this.PlayAnimation(AnimationType.Left);
+                    this.PlayAnimation(AnimationType.MoveLeft);
+                    this.currentDirection = Direction.Left;
                 }
                 if (keyState.IsKeyDown(Keys.S))
                 {
                     //move down
                     this.sDirection += new Vector2(0, 1);
-                    this.PlayAnimation(AnimationType.Down);
+                    this.PlayAnimation(AnimationType.MoveDown);
+                    this.currentDirection = Direction.Down;
                 }
                 if (keyState.IsKeyDown(Keys.D))
                 {
                     //move right
                     this.sDirection += new Vector2(1, 0);
-                    this.PlayAnimation(AnimationType.Right);
+                    this.PlayAnimation(AnimationType.MoveRight);
+                    this.currentDirection = Direction.Right;
                 }
             }
-            //if (keyState.IsKeyDown(Keys.Space))
-            //{
-            //    if (this.currentAnimation == AnimationType.Up)
-            //    {
-            //        this.PlayAnimation(AnimationType.AttackUp);
-            //    }
-            //    if (this.currentAnimation == AnimationType.Down)
-            //    {
-            //        this.PlayAnimation(AnimationType.AttackDown);
-            //    }
-            //    if (this.currentAnimation == AnimationType.Right)
-            //    {
-            //        this.PlayAnimation(AnimationType.AttackRight);
-            //    }
-            //    if (this.currentAnimation == AnimationType.Left)
-            //    {
-            //        this.PlayAnimation(AnimationType.AttackLeft);
-            //    }
-            //}
-            //else if (!attacking)
-            //{
-            //    if (this.currentAnimation == AnimationType.Up)
-            //    {
-            //        this.PlayAnimation(AnimationType.IdleUp);
-            //    }
-            //    if (this.currentAnimation == AnimationType.Down)
-            //    {
-            //        this.PlayAnimation(AnimationType.IdleDown);
-            //    }
-            //    if (this.currentAnimation == AnimationType.Right)
-            //    {
-            //        this.PlayAnimation(AnimationType.IdleRight);
-            //    }
-            //    if (this.currentAnimation == AnimationType.Left)
-            //    {
-            //        this.PlayAnimation(AnimationType.IdleLeft);
-            //    }
-            //}
+            if (keyState.IsKeyDown(Keys.Space))
+            {
+                if (this.currentAnimation.ToString().Contains("Up"))
+                {
+                    this.PlayAnimation(AnimationType.AttackUp);
+                    this.currentDirection = Direction.Up;
+                }
+                if (this.currentAnimation.ToString().Contains("Down"))
+                {
+                    this.PlayAnimation(AnimationType.AttackDown);
+                    this.currentDirection = Direction.Down;
+                }
+                if (this.currentAnimation.ToString().Contains("Right"))
+                {
+                    this.PlayAnimation(AnimationType.AttackRight);
+                    this.currentDirection = Direction.Right;
+                }
+                if (this.currentAnimation.ToString().Contains("Left"))
+                {
+                    this.PlayAnimation(AnimationType.AttackLeft);
+                    this.currentDirection = Direction.Left;
+                }
+                this.attacking = true;
+            }
+            else if (!attacking)
+            {
+                if (this.currentAnimation.ToString().Contains("Up"))
+                {
+                    this.PlayAnimation(AnimationType.IdleUp);
+                }
+                if (this.currentAnimation.ToString().Contains("Down"))
+                {
+                    this.PlayAnimation(AnimationType.IdleDown);
+                }
+                if (this.currentAnimation.ToString().Contains("Right"))
+                {
+                    this.PlayAnimation(AnimationType.IdleRight);
+                }
+                if (this.currentAnimation.ToString().Contains("Left"))
+                {
+                    this.PlayAnimation(AnimationType.IdleLeft);
+                }
+            }
+            this.currentDirection = Direction.None;
+        }
+
+        public override void AnimationDone()
+        {
+            string animationType = this.currentAnimation.ToString();
+            if (animationType.Contains("Attack"))
+            {
+                this.attacking = false;
+            }
         }
     }
 }

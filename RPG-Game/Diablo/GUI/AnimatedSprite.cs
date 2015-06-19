@@ -15,6 +15,7 @@ namespace Diablo.GUI
         protected Vector2 sDirection = Vector2.Zero;
         private Dictionary<AnimationType, Rectangle[]> sAnimations = new Dictionary<AnimationType, Rectangle[]>();
         protected AnimationType currentAnimation;
+        protected Direction currentDirection = Direction.None;
 
         protected AnimatedSprite(Vector2 position)
         {
@@ -52,18 +53,20 @@ namespace Diablo.GUI
                 }
                 else
                 {
+                    AnimationDone();
                     this.frameIndex = 0;
                 }
             }
         }
-        public void PlayAnimation(AnimationType direction)
+        public void PlayAnimation(AnimationType animation)
         {
-            if (this.currentAnimation != direction)
+            if (this.currentAnimation != animation && currentDirection == Direction.None)
             {
-                this.currentAnimation = direction;
+                this.currentAnimation = animation;
                 this.frameIndex = 0;
             }
         }
+        public abstract void AnimationDone();
         public void Draw(SpriteBatch spriteBatch)
         {
            spriteBatch.Draw(this.sTexture, this.sPosition, this.sAnimations[currentAnimation][frameIndex],Color.White);

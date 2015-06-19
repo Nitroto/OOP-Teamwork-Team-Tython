@@ -17,8 +17,8 @@ namespace Diablo
 
         public Diablo()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            this.graphics = new GraphicsDeviceManager(this);
+            this.Content.RootDirectory = "Content";
         }
 
         /// <summary>
@@ -41,11 +41,11 @@ namespace Diablo
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            player = new Player(new Vector2(100,100));
-            player.LoadContentent(Content);
+            this.player = new Player(new Vector2(-30,-20));
+            this.player.LoadContentent(Content);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Diablo
                 Exit();
 
             // TODO: Add your update logic here
-            player.Update(gameTime);
+            this.player.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -81,9 +81,9 @@ namespace Diablo
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            player.Draw(spriteBatch);
-            spriteBatch.End();
+            this.spriteBatch.Begin();
+            this.player.Draw(spriteBatch);
+            this.spriteBatch.End();
             base.Draw(gameTime);
         }
     }
