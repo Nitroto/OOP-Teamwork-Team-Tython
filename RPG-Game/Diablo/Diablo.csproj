@@ -50,8 +50,14 @@
     <Compile Include="Interfaces\IAttack.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\IHeal.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
+    <Compile Include="Interfaces\IKillable.cs" />
+    <Compile Include="Interfaces\IManaregenable.cs" />
     <Compile Include="Interfaces\IShield.cs" />
-    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Enums\MaskColor.cs" />
+    <Compile Include="Items\Enums\PotionColor.cs" />
+    <Compile Include="Items\Enums\ShieldColor.cs" />
+    <Compile Include="Items\Mask.cs" />
     <Compile Include="Items\Potion.cs" />
     <Compile Include="Items\Shield.cs" />
     <Compile Include="Position.cs" />

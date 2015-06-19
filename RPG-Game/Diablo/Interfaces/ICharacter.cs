@@ -10,5 +10,6 @@ namespace Diablo.Interfaces
 
         void ApplyItems(Item item);
         void RemoveItems(Item item);
+        bool IsAlive { get; set; }
     }
 }
