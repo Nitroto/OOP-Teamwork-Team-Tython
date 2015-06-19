@@ -14,6 +14,7 @@ namespace Diablo
         SpriteBatch spriteBatch;
 
         Player player;
+        HealthBar health;
 
         public Diablo()
         {
@@ -45,6 +46,8 @@ namespace Diablo
 
             // TODO: use this.Content to load your game content here
             this.player = new Player(new Vector2(-30,-20));
+            this.health = new HealthBar((new Vector2(10, 400)));
+            this.health.LoadContentent(Content);
             this.player.LoadContentent(Content);
         }
 
@@ -69,6 +72,7 @@ namespace Diablo
 
             // TODO: Add your update logic here
             this.player.Update(gameTime);
+            this.health.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -82,7 +86,9 @@ namespace Diablo
 
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
+            this.health.Draw(spriteBatch);
             this.player.Draw(spriteBatch);
+            
             this.spriteBatch.End();
             base.Draw(gameTime);
         }

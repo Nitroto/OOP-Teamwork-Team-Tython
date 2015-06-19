@@ -67,7 +67,7 @@ namespace Diablo.GUI
             }
         }
         public abstract void AnimationDone();
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
            spriteBatch.Draw(this.sTexture, this.sPosition, this.sAnimations[currentAnimation][frameIndex],Color.White);
         }
