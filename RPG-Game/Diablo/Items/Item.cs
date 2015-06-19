@@ -1,9 +1,11 @@
-﻿namespace Diablo.Items
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Diablo.Items
 {
-    abstract public class Item : GameObject
+    class Item
     {
-        public int Damage { get; set; }
-        public int Health { get; set; }
-        public int Mana { get; set; }
     }
 }

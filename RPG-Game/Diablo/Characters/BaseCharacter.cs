@@ -9,19 +9,20 @@ namespace Diablo.Characters
         public List<Item> items;
 
 
-        protected BaseCharacter(string name,int health,int damage, int mana)
+        protected BaseCharacter(int health,int damage, int mana)
         {
-            this.Name = name;
             this.Health = health;
             this.Damage = damage;
             this.Mana = mana;
             this.items = new List<Item>();
+            this.IsAlive = true;
         }
 
 
         public int Health { get; set; }
         public int Mana { get; set; }
         public int Damage { get; set; }
+        public bool IsAlive { get; set; }
 
 
         public void Attack(ICharacter enemy)
@@ -40,6 +41,11 @@ namespace Diablo.Characters
             {
                 enemy.Health -= this.Damage;
             }
+
+            if (enemy.Health <= 0)
+            {
+                enemy.IsAlive = false;
+            }
         }
 
         public void ApplyItems(Item item)
@@ -57,6 +63,12 @@ namespace Diablo.Characters
             this.Damage -= item.Damage;
             this.Health -= item.Health;
             this.Mana -= item.Mana;
+
+            if (this.Health <= 0)
+            {
+                this.Health = 1;
+            }
         }
+
     }
 }
