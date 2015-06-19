@@ -1,10 +1,9 @@
 ﻿namespace Diablo.Interfaces
 {
-    public interface ICharacter : IAttack, IKillable
+    public interface ICharacter : IAttack
     {
-        string Name { get; }
-        int Health { get; }
-        int Damage { get; }
         int Mana { get; }
+        int Damage { get; }
+        int Health { get; }
     }
 }

@@ -2,21 +2,21 @@
 
 namespace Diablo.Characters
 {
-    public abstract class BaseCharacter : ICharacter
+    public abstract class BaseCharacter : GameObject, ICharacter
     {
-        public string Name { get; private set; }
-        public int Health { get; private set; }
-        public int Damage { get; private set; }
-        public int Mana { get; private set; }
-        public void Attack(ICharacter enemy)
+
+        protected BaseCharacter(string name,int health,int damage, int mana)
         {
-            throw new System.NotImplementedException();
+            this.Name = name;
+            this.Health = health;
+            this.Damage = damage;
+            this.Mana = mana;
         }
 
-        int IKillable.Health
-        {
-            get { return Health; }
-            set { Health = value; }
-        }
+        public int Health { get; private set; }
+        public int Mana { get; private set; }
+        public int Damage { get; private set; }
+
+        public abstract void Attack(ICharacter enemy);
     }
 }
