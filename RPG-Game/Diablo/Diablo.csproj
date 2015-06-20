@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Characters\Barbarian.cs" />
     <Compile Include="Characters\BaseCharacter.cs" />
+    <Compile Include="Exceptions\InvalidOrNullNameException.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GUI\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
@@ -54,9 +55,8 @@
     <Compile Include="Interfaces\IKillable.cs" />
     <Compile Include="Interfaces\IManaregenable.cs" />
     <Compile Include="Interfaces\IShield.cs" />
-    <Compile Include="Items\Enums\MaskColor.cs" />
-    <Compile Include="Items\Enums\PotionColor.cs" />
-    <Compile Include="Items\Enums\ShieldColor.cs" />
+    <Compile Include="Items\Enums\Color.cs" />
+    <Compile Include="Items\Item.cs" />
     <Compile Include="Items\Mask.cs" />
     <Compile Include="Items\Potion.cs" />
     <Compile Include="Items\Shield.cs" />

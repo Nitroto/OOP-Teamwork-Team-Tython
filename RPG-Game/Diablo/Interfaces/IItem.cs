@@ -1,9 +1,12 @@
-﻿namespace Diablo.Items
+﻿using Diablo.Items.Enums;
+
+namespace Diablo.Items
 {
-    abstract public class Item : GameObject
+    public interface IItem
     {
-        public int Damage { get; set; }
-        public int Health { get; set; }
-        public int Mana { get; set; }
+        int Damage { get; set; }
+        int Health { get; set; }
+        int Mana { get; set; }
+        Color Color { get; set; }
     }
 }

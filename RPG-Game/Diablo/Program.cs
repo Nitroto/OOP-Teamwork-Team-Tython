@@ -1,4 +1,6 @@
 ﻿using System;
+using Diablo.Items;
+using Diablo.Items.Enums;
 
 namespace Diablo
 {

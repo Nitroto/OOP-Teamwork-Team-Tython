@@ -2,7 +2,7 @@
 
 namespace Diablo.Interfaces
 {
-    public interface ICharacter : IAttack
+    public interface ICharacter : IAttack, IKillable
     {
         int Mana { get; set; }
         int Damage { get; set; }
@@ -10,6 +10,5 @@ namespace Diablo.Interfaces
 
         void ApplyItems(Item item);
         void RemoveItems(Item item);
-        bool IsAlive { get; set; }
     }
 }

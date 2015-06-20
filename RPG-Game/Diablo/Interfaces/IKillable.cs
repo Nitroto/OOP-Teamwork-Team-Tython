@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Diablo.Interfaces
 {
-    interface IKillable
+    public interface IKillable
     {
+        bool IsAlive { get; set; }
     }
 }

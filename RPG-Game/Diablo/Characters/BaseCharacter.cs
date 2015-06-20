@@ -9,7 +9,7 @@ namespace Diablo.Characters
         public List<Item> items;
 
 
-        protected BaseCharacter(string name, int health,int damage, int mana)
+        protected BaseCharacter(string name, int health,int damage, int mana) : base(name)
         {
             this.Name = name;
             this.Health = health;
