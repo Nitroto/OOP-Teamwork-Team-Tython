@@ -15,6 +15,7 @@ namespace Diablo
 
         Player player;
         HealthBar health;
+        HealthBar mana;
 
         public Diablo()
         {
@@ -46,9 +47,11 @@ namespace Diablo
 
             // TODO: use this.Content to load your game content here
             this.player = new Player(new Vector2(-30,-20));
-            this.health = new HealthBar((new Vector2(10, 400)));
+            this.health = new HealthBar((new Vector2(10, 400)), @"res/barbarian/health.png");
+            this.mana = new HealthBar((new Vector2(740, 400)), @"res/barbarian/mana.png");
             this.health.LoadContentent(Content);
             this.player.LoadContentent(Content);
+            this.mana.LoadContentent(Content);
         }
 
         /// <summary>
@@ -73,6 +76,7 @@ namespace Diablo
             // TODO: Add your update logic here
             this.player.Update(gameTime);
             this.health.Update(gameTime);
+            this.mana.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -88,6 +92,7 @@ namespace Diablo
             this.spriteBatch.Begin();
             this.health.Draw(spriteBatch);
             this.player.Draw(spriteBatch);
+            this.mana.Draw(spriteBatch);
             
             this.spriteBatch.End();
             base.Draw(gameTime);
