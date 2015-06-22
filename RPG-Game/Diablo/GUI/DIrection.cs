@@ -6,6 +6,10 @@
         Up,
         Down,
         Left,
-        Right
+        Right,
+        UpRight,
+        UpLeft,
+        DownLeft,
+        DowRight
     }
 }
