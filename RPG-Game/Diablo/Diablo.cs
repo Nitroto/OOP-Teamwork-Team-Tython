@@ -47,8 +47,8 @@ namespace Diablo
 
             // TODO: use this.Content to load your game content here
             this.player = new Player(new Vector2(-30,-20));
-            this.health = new HealthBar((new Vector2(10, 400)), @"res/barbarian/health.png");
-            this.mana = new HealthBar((new Vector2(740, 400)), @"res/barbarian/mana.png");
+            this.health = new HealthBar((new Vector2(10, 400)), @"res/bars/health.png");
+            this.mana = new HealthBar((new Vector2(740, 400)), @"res/bars/mana.png");
             this.health.LoadContentent(Content);
             this.player.LoadContentent(Content);
             this.mana.LoadContentent(Content);

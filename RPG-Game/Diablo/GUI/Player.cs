@@ -57,7 +57,7 @@ namespace Diablo.GUI
 
         public void LoadContentent(ContentManager contentManager)
         {
-            this.sTexture = contentManager.Load<Texture2D>(@"res/barbarian/barbarian.png");
+            this.sTexture = contentManager.Load<Texture2D>(@"res/characters/rogue.png");
         }
         public override void Update(GameTime gameTime)
         {
