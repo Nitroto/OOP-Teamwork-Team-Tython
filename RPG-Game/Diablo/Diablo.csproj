@@ -85,6 +85,9 @@
     <Content Include="Content\res\characters\rogue.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\res\characters\sorcerer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\res\characters\warrior.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

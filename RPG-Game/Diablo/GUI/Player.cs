@@ -13,6 +13,8 @@ namespace Diablo.GUI
         float playerSpeed = 100f;
         private bool attacking = false;
         private bool isHitted = false;
+        private bool isDead = false;
+        private bool castSPell = false;
 
         public Player(Vector2 position)
             : base(position)
@@ -26,22 +28,22 @@ namespace Diablo.GUI
             this.AddAnimation(8, (5 * FrameHeight), 0, AnimationType.MoveDownLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
             this.AddAnimation(8, (6 * FrameHeight), 0, AnimationType.MoveUpRight, FrameWidth, FrameHeight, new Vector2(0, 0));
             this.AddAnimation(8, (7 * FrameHeight), 0, AnimationType.MoveUpLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(11, (8 * FrameHeight), 0, AnimationType.AttackRight, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(11, (9 * FrameHeight), 0, AnimationType.AttackLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(11, (10 * FrameHeight), 0, AnimationType.AttackDown, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(11, (11 * FrameHeight), 0, AnimationType.AttackUp, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(11, (12 * FrameHeight), 0, AnimationType.AttackDownRight, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(11, (13 * FrameHeight), 0, AnimationType.AttackDownLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(11, (14 * FrameHeight), 0, AnimationType.AttackUpRight, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(11, (15 * FrameHeight), 0, AnimationType.AttackUpLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, (16 * FrameHeight), 0, AnimationType.HittedRight, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, (17 * FrameHeight), 0, AnimationType.HittedLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, (18 * FrameHeight), 0, AnimationType.HittedDown, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, (19 * FrameHeight), 0, AnimationType.HittedUp, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, (20 * FrameHeight), 0, AnimationType.HittedDownRight, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, (21 * FrameHeight), 0, AnimationType.HittedDownLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, (22 * FrameHeight), 0, AnimationType.HittedUpRight, FrameWidth, FrameHeight, new Vector2(0, 0));
-            this.AddAnimation(8, (23 * FrameHeight), 0, AnimationType.HittedUpLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(13, (8 * FrameHeight), 0, AnimationType.AttackRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(13, (9 * FrameHeight), 0, AnimationType.AttackLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(13, (10 * FrameHeight), 0, AnimationType.AttackDown, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(13, (11 * FrameHeight), 0, AnimationType.AttackUp, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(13, (12 * FrameHeight), 0, AnimationType.AttackDownRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(13, (13 * FrameHeight), 0, AnimationType.AttackDownLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(13, (14 * FrameHeight), 0, AnimationType.AttackUpRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(13, (15 * FrameHeight), 0, AnimationType.AttackUpLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(9, (16 * FrameHeight), 0, AnimationType.HittedRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(9, (17 * FrameHeight), 0, AnimationType.HittedLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(9, (18 * FrameHeight), 0, AnimationType.HittedDown, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(9, (19 * FrameHeight), 0, AnimationType.HittedUp, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(9, (20 * FrameHeight), 0, AnimationType.HittedDownRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(9, (21 * FrameHeight), 0, AnimationType.HittedDownLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(9, (22 * FrameHeight), 0, AnimationType.HittedUpRight, FrameWidth, FrameHeight, new Vector2(0, 0));
+            this.AddAnimation(9, (23 * FrameHeight), 0, AnimationType.HittedUpLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
             this.AddAnimation(1, (24 * FrameHeight), 0, AnimationType.IdleRight, FrameWidth, FrameHeight, new Vector2(0, 0));
             this.AddAnimation(1, (25 * FrameHeight), 0, AnimationType.IdleLeft, FrameWidth, FrameHeight, new Vector2(0, 0));
             this.AddAnimation(1, (26 * FrameHeight), 0, AnimationType.IdleDown, FrameWidth, FrameHeight, new Vector2(0, 0));
@@ -57,7 +59,7 @@ namespace Diablo.GUI
 
         public void LoadContentent(ContentManager contentManager)
         {
-            this.sTexture = contentManager.Load<Texture2D>(@"res/characters/rogue.png");
+            this.sTexture = contentManager.Load<Texture2D>(@"res/characters/sorcerer.png");
         }
         public override void Update(GameTime gameTime)
         {
@@ -74,7 +76,7 @@ namespace Diablo.GUI
         }
         private void HandleInput(KeyboardState keyState)
         {
-            if (!attacking && !isHitted)
+            if (!attacking && !isHitted&&!isDead)
             {
                 if (keyState.IsKeyDown(Keys.W))
                 {
@@ -165,7 +167,7 @@ namespace Diablo.GUI
                     }
                 }
             }
-            if (keyState.IsKeyDown(Keys.Space) && !isHitted)
+            if (keyState.IsKeyDown(Keys.Space) && !isHitted && !isDead)
             {
                 if (this.currentAnimation.ToString().Contains("Up"))
                 {
@@ -215,7 +217,7 @@ namespace Diablo.GUI
                 }
                 this.attacking = true;
             }
-            else if (!attacking && !isHitted)
+            else if (!attacking && !isHitted && !isDead)
             {
                 if (this.currentAnimation.ToString().Contains("Up"))
                 {
@@ -256,7 +258,7 @@ namespace Diablo.GUI
                     this.PlayAnimation(AnimationType.IdleLeft);
                 }
             }
-            else if (isHitted && !attacking)
+            else if (isHitted && !attacking && !isDead)
             {
                 if (this.currentAnimation.ToString().Contains("Up"))
                 {
@@ -304,6 +306,10 @@ namespace Diablo.GUI
                     this.PlayAnimation(AnimationType.HittedLeft);
                     this.currentDirection = Direction.Left;
                 }
+            }
+            else if (isDead)
+            {
+
             }
             this.currentDirection = Direction.None;
             if (keyState.IsKeyDown(Keys.Down))

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Diablo.GUI
+﻿namespace Diablo.GUI
 {
     enum AnimationType
     {
@@ -38,6 +33,22 @@ namespace Diablo.GUI
         IdleUpLeft,
         IdleUpRight,
         IdledDownLeft,
-        IdleDownRight
+        IdleDownRight,
+        CastSpellUp,
+        CastSpellDown,
+        CastSpellLeft,
+        CastSpellRight,
+        CastSpellUpLeft,
+        CastSpellUpRight,
+        CastSpellDownLeft,
+        CastSpellDownRight,
+        DieUp,
+        DieDown,
+        DieLeft,
+        DieRight,
+        DieUpLeft,
+        DieUpRight,
+        DiedDownLeft,
+        DieDownRight
     }
 }
