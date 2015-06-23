@@ -6,6 +6,8 @@ namespace Diablo.GUI
 {
     abstract class AnimatedSprite
     {
+        private const int FrameWidth = 96;
+        private const int FrameHeight = 96;
         protected Vector2 sPosition;
         protected Texture2D sTexture;
         private Rectangle[] sRectangles;
@@ -22,12 +24,13 @@ namespace Diablo.GUI
             this.sPosition = position;
         }
 
-        public void AddAnimation(int frames, int yPos, int xStartFrama, AnimationType direction, int width, int height, Vector2 offset)
+        public void AddAnimation(int frames, int yPos, AnimationType direction)
         {
+            int xStartFrama = 0;
             Rectangle[] rectangles = new Rectangle[frames];
             for (int i = 0; i < frames; i++)
             {
-                rectangles[i] = new Rectangle((i+xStartFrama)*width,yPos,width,height);
+                rectangles[i] = new Rectangle((i + xStartFrama) * FrameWidth, yPos, FrameWidth, FrameHeight);
             }
             this.sAnimations.Add(direction, rectangles);
 

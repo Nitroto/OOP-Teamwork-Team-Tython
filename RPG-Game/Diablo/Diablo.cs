@@ -13,7 +13,7 @@ namespace Diablo
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Player player;
+        AnimationsDetails player;
         HealthBar health;
         HealthBar mana;
 
@@ -46,7 +46,7 @@ namespace Diablo
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            this.player = new Player(new Vector2(-30,-20));
+            this.player = new RogueAnimation(new Vector2(-30,-20),CharactersType.Rogue);
             this.health = new HealthBar((new Vector2(10, 400)), @"res/bars/health.png");
             this.mana = new HealthBar((new Vector2(740, 400)), @"res/bars/mana.png");
             this.health.LoadContentent(Content);
