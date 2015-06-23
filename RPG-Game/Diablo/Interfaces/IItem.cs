@@ -1,12 +1,12 @@
-﻿using Diablo.Items.Enums;
+﻿using Diablo.Enums;
 
-namespace Diablo.Items
+namespace Diablo.Interfaces
 {
     public interface IItem
     {
         int Damage { get; set; }
         int Health { get; set; }
         int Mana { get; set; }
-        Color Color { get; set; }
+        ItemSize ItemSize { get; set; }
     }
 }

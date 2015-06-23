@@ -1,4 +1,5 @@
-﻿using Diablo.Items.Enums;
+﻿using Diablo.Enums;
+using Diablo.Interfaces;
 
 namespace Diablo.Items
 {
@@ -16,6 +17,6 @@ namespace Diablo.Items
         public int Damage { get; set; }
         public int Health { get; set; }
         public int Mana { get; set; }
-        public Color Color { get; set; }
+        public ItemSize ItemSize { get; set; }
     }
 }

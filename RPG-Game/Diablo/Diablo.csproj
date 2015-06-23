@@ -39,11 +39,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Characters\Enemies\BaseEnemy.cs" />
+    <Compile Include="Characters\Enemies\Orc.cs" />
+    <Compile Include="Characters\Enemies\Troll.cs" />
+    <Compile Include="Characters\Enemies\Zombie.cs" />
     <Compile Include="Characters\Heroes\Barbarian.cs" />
     <Compile Include="Characters\Heroes\BaseCharacter.cs" />
     <Compile Include="Characters\Heroes\Rogue.cs" />
     <Compile Include="Characters\Heroes\Sorcerer.cs" />
+    <Compile Include="Enums\HeroType.cs" />
     <Compile Include="Exceptions\InvalidOrNullNameException.cs" />
+    <Compile Include="Factories\EnemyFactory.cs" />
+    <Compile Include="Factories\HeroesFactory.cs" />
+    <Compile Include="Factories\ItemFactory.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GUI\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
@@ -58,7 +65,7 @@
     <Compile Include="Interfaces\IKillable.cs" />
     <Compile Include="Interfaces\IManaregenable.cs" />
     <Compile Include="Interfaces\IShield.cs" />
-    <Compile Include="Items\Enums\Color.cs" />
+    <Compile Include="Enums\ItemSize.cs" />
     <Compile Include="Items\Crown.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\Mask.cs" />

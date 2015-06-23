@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Diablo.Items.Enums;
+using Diablo.Enums;
 
 namespace Diablo.Items
 {
@@ -10,10 +10,11 @@ namespace Diablo.Items
     {
         new private const int Health = 0;
 
-        public Crown(Color crownColor)
-            : base(crownColor.ToString(), Health, (int)crownColor, (int)crownColor)
+        public Crown(ItemSize crownSize)
+            : base(crownSize.ToString(), Health, (int)crownSize, (int)crownSize)
         {
-            this.Color = crownColor;
+            this.ItemSize = crownSize;
         }
+
     }
 }

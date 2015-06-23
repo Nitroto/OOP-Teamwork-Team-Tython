@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Diablo.Characters.Heroes;
 using Diablo.Interfaces;
 using Diablo.Items;
@@ -7,9 +8,15 @@ namespace Diablo.Characters.Enemies
 {
     public abstract class BaseEnemy : GameObject, ICharacter
     {
+        private static readonly string[] enemyNames = new string[] {"Angel", "Nasko", "Bogomil", "Filip"};
+        static readonly Random Rnd = new Random();
 
-        protected BaseEnemy(string name) : base(name)
+        protected BaseEnemy(int damage,int health) : base(enemyNames[Rnd.Next(0,enemyNames.Length)])
         {
+            this.Health = health;
+            this.Damage = damage;
+            this.IsAlive = true;
+            this.Items = new List<IItem>();
         }
 
 

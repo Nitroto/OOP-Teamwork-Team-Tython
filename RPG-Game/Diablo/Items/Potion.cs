@@ -1,4 +1,5 @@
-﻿using Diablo.Items.Enums;
+﻿
+using Diablo.Enums;
 
 namespace Diablo.Items
 {
@@ -7,10 +8,10 @@ namespace Diablo.Items
         new private const int Health = 0;
         new private const int Damage = 0;
 
-        public Potion(Color potionColor)
-            : base(potionColor.ToString(), Health, Damage, (int)potionColor)
+        public Potion(ItemSize potionSize)
+            : base(potionSize.ToString(), Health, Damage, (int)potionSize)
         {
-            this.Color = potionColor;
+            this.ItemSize = potionSize;
         }
     }
 }

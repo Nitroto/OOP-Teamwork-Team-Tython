@@ -1,6 +1,4 @@
 ﻿using System;
-using Diablo.Items;
-using Diablo.Items.Enums;
 
 namespace Diablo
 {
@@ -16,7 +14,6 @@ namespace Diablo
         [STAThread]
         static void Main()
         {
-            IItem item  = new Crown(Color.Black);
             using (var game = new Diablo())
                 game.Run();
         }
