@@ -2,56 +2,42 @@
 using Diablo.Interfaces;
 using Diablo.Items;
 
-namespace Diablo.Characters
+namespace Diablo.Characters.Heroes
 {
     public abstract class BaseCharacter : GameObject, ICharacter
     {
-        public List<Item> items;
 
-
-        protected BaseCharacter(string name, int health,int damage, int mana) : base(name)
+        protected BaseCharacter(string name, int health, int damage, int mana)
+            : base(name)
         {
-            this.Name = name;
             this.Health = health;
             this.Damage = damage;
             this.Mana = mana;
-            this.items = new List<Item>();
+            this.Items = new List<IItem>();
             this.IsAlive = true;
         }
 
-
         public int Health { get; set; }
+        public List<IItem> Items { get; set; }
         public int Mana { get; set; }
         public int Damage { get; set; }
         public bool IsAlive { get; set; }
+        void IKillable.IsDead(ICharacter enemy)
+        {
+            IsDead(enemy);
+        }
 
 
         public void Attack(ICharacter enemy)
         {
-            if (enemy is Barbarian)
-            {
-                Barbarian barbarian = enemy as Barbarian;
-                barbarian.Shield -= this.Damage;
-                if (barbarian.Shield < 0)
-                {
-                    barbarian.Health -= barbarian.Shield;
-                    barbarian.Shield = 0;
-                }
-            }
-            else
-            {
-                enemy.Health -= this.Damage;
-            }
+            enemy.Health -= this.Damage;
 
-            if (enemy.Health <= 0)
-            {
-                enemy.IsAlive = false;
-            }
+            IsDead(enemy);
         }
 
         public void ApplyItems(Item item)
         {
-            this.items.Add(item);
+            this.Items.Add(item);
             this.Damage += item.Damage;
             this.Health += item.Health;
             this.Mana += item.Mana;
@@ -60,7 +46,7 @@ namespace Diablo.Characters
 
         public void RemoveItems(Item item)
         {
-            this.items.Remove(item);
+            this.Items.Remove(item);
             this.Damage -= item.Damage;
             this.Health -= item.Health;
             this.Mana -= item.Mana;
@@ -71,5 +57,12 @@ namespace Diablo.Characters
             }
         }
 
+        private static void IsDead(ICharacter enemy)
+        {
+            if (enemy.Health <= 0)
+            {
+                enemy.IsAlive = false;
+            }
+        }
     }
 }

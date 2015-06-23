@@ -38,8 +38,11 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Characters\Barbarian.cs" />
-    <Compile Include="Characters\BaseCharacter.cs" />
+    <Compile Include="Characters\Enemies\BaseEnemy.cs" />
+    <Compile Include="Characters\Heroes\Barbarian.cs" />
+    <Compile Include="Characters\Heroes\BaseCharacter.cs" />
+    <Compile Include="Characters\Heroes\Rogue.cs" />
+    <Compile Include="Characters\Heroes\Sorcerer.cs" />
     <Compile Include="Exceptions\InvalidOrNullNameException.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GUI\AnimatedSprite.cs" />
@@ -108,6 +111,7 @@
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
+  <ItemGroup />
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->
   <Target Name="BeforeResolveReferences">
     <CreateProperty Value="$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Windows;$(AssemblySearchPaths)">
