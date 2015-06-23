@@ -45,9 +45,13 @@
     <Compile Include="GUI\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
     <Compile Include="GUI\AnimationsType.cs" />
+    <Compile Include="GUI\CharactersType.cs" />
     <Compile Include="GUI\Direction.cs" />
     <Compile Include="GUI\HealthBar.cs" />
-    <Compile Include="GUI\Player.cs" />
+    <Compile Include="GUI\AnimationsDetails.cs" />
+    <Compile Include="GUI\RogueAnimation.cs" />
+    <Compile Include="GUI\SorcererAnimation.cs" />
+    <Compile Include="GUI\BarbarianAnimation.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\IHeal.cs" />
@@ -88,7 +92,7 @@
     <Content Include="Content\res\characters\sorcerer.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\characters\warrior.png">
+    <Content Include="Content\res\characters\barbarian.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\menu\menu-characters.png">
