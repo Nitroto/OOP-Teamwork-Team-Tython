@@ -47,7 +47,7 @@ namespace Diablo.GUI
         public virtual void Update(GameTime gameTime)
         {
             this.timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
-            if (this.timeElapsed>this.timeToUpdate)
+            if (this.timeElapsed > this.timeToUpdate)
             {
                 this.timeElapsed -= this.timeToUpdate;
                 if (this.frameIndex < this.sAnimations[currentAnimation].Length - 1)
@@ -56,7 +56,7 @@ namespace Diablo.GUI
                 }
                 else
                 {
-                    AnimationDone();
+                    this.AnimationDone();
                     this.frameIndex = 0;
                 }
             }
@@ -72,7 +72,7 @@ namespace Diablo.GUI
         public abstract void AnimationDone();
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-           spriteBatch.Draw(this.sTexture, this.sPosition, this.sAnimations[currentAnimation][frameIndex],Color.White);
+            spriteBatch.Draw(this.sTexture, this.sPosition, this.sAnimations[currentAnimation][frameIndex], Color.White);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Diablo.GUI;
+using Diablo.GUI.CharacterAnimation;
+using Diablo.GUI.StatusBarAnimation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,9 +15,9 @@ namespace Diablo
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        AnimationsDetails player;
-        HealthBar health;
-        HealthBar mana;
+        CharacterAnimation player;
+        StatusBar health;
+        StatusBar mana;
 
         public Diablo()
         {
@@ -46,9 +48,9 @@ namespace Diablo
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            this.player = new RogueAnimation(new Vector2(-30,-20),CharactersType.Rogue);
-            this.health = new HealthBar((new Vector2(10, 400)), @"res/bars/health.png");
-            this.mana = new HealthBar((new Vector2(740, 400)), @"res/bars/mana.png");
+            this.player = new SorcererAnimation(new Vector2(-30,-20),CharactersType.Sorcerer);
+            this.health = new Health((new Vector2(10, 400)));
+            this.mana = new Mana((new Vector2(740, 400)));
             this.health.LoadContentent(Content);
             this.player.LoadContentent(Content);
             this.mana.LoadContentent(Content);

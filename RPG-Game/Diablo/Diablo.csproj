@@ -55,13 +55,16 @@
     <Compile Include="GUI\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
     <Compile Include="GUI\AnimationsType.cs" />
-    <Compile Include="GUI\CharactersType.cs" />
+    <Compile Include="GUI\CharacterAnimation\CharactersType.cs" />
     <Compile Include="GUI\Direction.cs" />
-    <Compile Include="GUI\HealthBar.cs" />
-    <Compile Include="GUI\AnimationsDetails.cs" />
-    <Compile Include="GUI\RogueAnimation.cs" />
-    <Compile Include="GUI\SorcererAnimation.cs" />
-    <Compile Include="GUI\BarbarianAnimation.cs" />
+    <Compile Include="GUI\StatusBarAnimation\Health.cs" />
+    <Compile Include="GUI\StatusBarAnimation\Inventory.cs" />
+    <Compile Include="GUI\StatusBarAnimation\Mana.cs" />
+    <Compile Include="GUI\StatusBarAnimation\StatusBar.cs" />
+    <Compile Include="GUI\CharacterAnimation\CharacterAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\RogueAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\SorcererAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\BarbarianAnimation.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\IHeal.cs" />
@@ -116,9 +119,9 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <Folder Include="GUI\EnemyAnimation\" />
+    <Folder Include="GUI\ItemAnimation\" />
   </ItemGroup>
-  <ItemGroup />
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->
   <Target Name="BeforeResolveReferences">
     <CreateProperty Value="$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Windows;$(AssemblySearchPaths)">
