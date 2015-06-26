@@ -46,7 +46,6 @@
     <Compile Include="Characters\Heroes\BaseCharacter.cs" />
     <Compile Include="Characters\Heroes\Rogue.cs" />
     <Compile Include="Characters\Heroes\Sorcerer.cs" />
-    <Compile Include="Enums\HeroType.cs" />
     <Compile Include="Exceptions\InvalidOrNullNameException.cs" />
     <Compile Include="Factories\EnemyFactory.cs" />
     <Compile Include="Factories\HeroesFactory.cs" />
@@ -54,17 +53,22 @@
     <Compile Include="GameObject.cs" />
     <Compile Include="GUI\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
-    <Compile Include="GUI\AnimationsType.cs" />
-    <Compile Include="GUI\CharacterAnimation\CharactersType.cs" />
-    <Compile Include="GUI\Direction.cs" />
+    <Compile Include="Enums\AnimationsType.cs" />
+    <Compile Include="Enums\CharacterType.cs" />
+    <Compile Include="Enums\Direction.cs" />
+    <Compile Include="GUI\CharacterAnimation\EnemyAnimation\EnemyAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\EnemyAnimation\GreyTrollAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\EnemyAnimation\OrcAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\EnemyAnimation\ZombieAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\PlayerAnimation\PlayerAnimation.cs" />
     <Compile Include="GUI\StatusBarAnimation\Health.cs" />
     <Compile Include="GUI\StatusBarAnimation\Inventory.cs" />
     <Compile Include="GUI\StatusBarAnimation\Mana.cs" />
     <Compile Include="GUI\StatusBarAnimation\StatusBar.cs" />
     <Compile Include="GUI\CharacterAnimation\CharacterAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\RogueAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\SorcererAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\BarbarianAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\PlayerAnimation\RogueAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\PlayerAnimation\SorcererAnimation.cs" />
+    <Compile Include="GUI\CharacterAnimation\PlayerAnimation\BarbarianAnimation.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\IHeal.cs" />
@@ -99,13 +103,22 @@
     <Content Include="Content\res\bars\mana.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\characters\rogue.png">
+    <Content Include="Content\res\characters\enemy\greytroll.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\characters\sorcerer.png">
+    <Content Include="Content\res\characters\enemy\orc.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\characters\barbarian.png">
+    <Content Include="Content\res\characters\player\rogue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characters\player\sorcerer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characters\player\barbarian.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characters\enemy\zombie.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\menu\menu-characters.png">
@@ -119,7 +132,6 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GUI\EnemyAnimation\" />
     <Folder Include="GUI\ItemAnimation\" />
   </ItemGroup>
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->

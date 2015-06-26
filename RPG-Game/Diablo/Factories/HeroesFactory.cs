@@ -7,15 +7,15 @@ namespace Diablo.Factories
 {
     class HeroesFactory
     {
-        public ICharacter CreateHero(HeroType heroe, string name)
+        public ICharacter CreateHero(CharacterType heroe, string name)
         {
             switch (heroe)
             {
-                case HeroType.Berberian: 
+                case CharacterType.Barbarian: 
                     return new Barbarian(name);
-                case HeroType.Rogue:
+                case CharacterType.Rogue:
                     return new Rogue(name);
-                case HeroType.Sorcerer:
+                case CharacterType.Sorcerer:
                     return new Sorcerer(name);
                 default:
                     throw new NotSupportedException("Heroe type not supported");

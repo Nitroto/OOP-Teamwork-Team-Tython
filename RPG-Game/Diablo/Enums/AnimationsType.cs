@@ -1,4 +1,4 @@
-﻿namespace Diablo.GUI
+﻿namespace Diablo.Enums
 {
     public enum AnimationType
     {

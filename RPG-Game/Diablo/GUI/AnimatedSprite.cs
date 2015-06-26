@@ -1,13 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Diablo.Enums;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace Diablo.GUI
 {
-    abstract class AnimatedSprite
+    public abstract class AnimatedSprite
     {
-        private const int FrameWidth = 96;
-        private const int FrameHeight = 96;
+        protected const int FrameWidth = 96;
+        protected const int FrameHeight = 96;
         protected Vector2 sPosition;
         protected Texture2D sTexture;
         private Rectangle[] sRectangles;
