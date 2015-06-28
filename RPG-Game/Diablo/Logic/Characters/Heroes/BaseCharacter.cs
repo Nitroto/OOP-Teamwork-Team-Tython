@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Diablo.Interfaces;
 using Diablo.Logic.Items;
+using Diablo.GUI.CharacterAnimation;
 
 namespace Diablo.Logic.Characters.Heroes
 {
@@ -17,6 +18,7 @@ namespace Diablo.Logic.Characters.Heroes
             this.Items = new List<IItem>();
             this.IsAlive = true;
         }
+        public CharacterAnimation CharacterAnimation { get; set; }
 
         public int Health { get; set; }
         public List<IItem> Items

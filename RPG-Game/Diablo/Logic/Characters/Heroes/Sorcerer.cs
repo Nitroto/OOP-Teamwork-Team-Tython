@@ -1,6 +1,8 @@
 ﻿using System;
 using Diablo.GUI;
 using Diablo.Logic.Items;
+using Microsoft.Xna.Framework;
+using Diablo.GUI.CharacterAnimation.PlayerAnimation;
 
 namespace Diablo.Logic.Characters.Heroes
 {
@@ -12,6 +14,7 @@ namespace Diablo.Logic.Characters.Heroes
 
         public Sorcerer(string name) : base(name, Health, Damage, Mana)
         {
+            this.CharacterAnimation = new SorcererAnimation(new Vector2(-30, -20));
         }
     }
 }

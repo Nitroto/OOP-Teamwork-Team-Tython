@@ -1,11 +1,15 @@
 ﻿using Diablo.Enums;
+using Diablo.GUI;
 using Diablo.GUI.CharacterAnimation.EnemyAnimation;
 using Diablo.GUI.CharacterAnimation.PlayerAnimation;
 using Diablo.GUI.StatusBarAnimation;
+using Diablo.Interfaces;
+using Diablo.Logic.Characters.Heroes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace Diablo
 {
@@ -19,8 +23,10 @@ namespace Diablo
 
         private const int maxEnemis = 10;
         private static Random rnd = new Random();
+        private ICharacter mainCharacter;
         private PlayerAnimation player;
         private EnemyAnimation[] enemys;
+        private List<AnimatedSprite> animations = new List<AnimatedSprite>();
         private StatusBar health;
         private StatusBar mana;
 
@@ -53,7 +59,8 @@ namespace Diablo
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            this.player = new SorcererAnimation(new Vector2(-30,-20));
+            this.mainCharacter = new Sorcerer("sorcerer");
+            //this.player = new SorcererAnimation(new Vector2(-30,-20));
             enemys = new EnemyAnimation[maxEnemis];
             for (int i = 0; i < this.enemys.Length; i++)
             {
@@ -66,11 +73,16 @@ namespace Diablo
                     case CharacterType.Orc: this.enemys[i] = new OrcAnimation(new Vector2(x, y));break;
                     case CharacterType.Zombie: this.enemys[i] = new ZombieAnimation(new Vector2(x, y));break;
                 }
+                this.animations.Add(this.enemys[i]);
             }
             this.health = new Health((new Vector2(10, 400)));
             this.mana = new Mana((new Vector2(740, 400)));
+            this.animations.Add(this.health);
+            this.animations.Add(this.mana);
+            this.animations.Add(this.mainCharacter.CharacterAnimation);
+            //Load Content calls
             this.health.LoadContentent(Content);
-            this.player.LoadContentent(Content);
+            this.mainCharacter.CharacterAnimation.LoadContentent(Content);
             foreach(EnemyAnimation enemy in enemys)
             {
                 enemy.LoadContentent(Content);
@@ -98,13 +110,13 @@ namespace Diablo
                 Exit();
 
             // TODO: Add your update logic here
-            this.player.Update(gameTime);
-            foreach (EnemyAnimation enemy in enemys)
+            //this.player.Update(gameTime);
+            foreach (AnimatedSprite animation in animations)
             {
-                enemy.Update(gameTime);
+                animation.Update(gameTime);
             }
-            this.health.Update(gameTime);
-            this.mana.Update(gameTime);
+           // this.health.Update(gameTime);
+           // this.mana.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -118,13 +130,13 @@ namespace Diablo
 
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
-            this.health.Draw(spriteBatch);
-            this.player.Draw(spriteBatch);
-            foreach (EnemyAnimation enemy in enemys)
+            //this.health.Draw(spriteBatch);
+            //this.player.Draw(spriteBatch);
+            foreach (AnimatedSprite animation in animations)
             {
-                enemy.Draw(spriteBatch);
+                animation.Draw(spriteBatch);
             }
-            this.mana.Draw(spriteBatch);
+           // this.mana.Draw(spriteBatch);
             
             this.spriteBatch.End();
             base.Draw(gameTime);

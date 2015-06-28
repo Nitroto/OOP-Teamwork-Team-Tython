@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Diablo.Interfaces;
 using Diablo.Logic.Items;
+using Diablo.GUI.CharacterAnimation;
 
 namespace Diablo.Logic.Characters.Enemies
 {
@@ -18,7 +19,7 @@ namespace Diablo.Logic.Characters.Enemies
             this.Items = new List<IItem>();
         }
 
-
+        public CharacterAnimation CharacterAnimation { get; set; }
         public bool IsAlive { get; set; }
         public int Damage { get; set; }
         public int Health { get; set; }
