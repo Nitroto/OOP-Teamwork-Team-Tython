@@ -75,8 +75,8 @@ namespace Diablo
                 }
                 this.animations.Add(this.enemys[i]);
             }
-            this.health = new Health((new Vector2(10, 400)));
-            this.mana = new Mana((new Vector2(740, 400)));
+            this.health = new Health((new Vector2(10, 400)),this.mainCharacter as BaseCharacter);
+            this.mana = new Mana((new Vector2(740, 400)), this.mainCharacter as BaseCharacter);
             this.animations.Add(this.health);
             this.animations.Add(this.mana);
             this.animations.Add(this.mainCharacter.CharacterAnimation);
