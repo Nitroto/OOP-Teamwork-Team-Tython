@@ -1,6 +1,6 @@
-﻿namespace Diablo.Characters.Enemies
+﻿namespace Diablo.Logic.Characters.Enemies
 {
-    class Zombie : BaseEnemy
+    public class Zombie : BaseEnemy
     {
         private new const int Damage = 10;
         private new const int Health = 70;

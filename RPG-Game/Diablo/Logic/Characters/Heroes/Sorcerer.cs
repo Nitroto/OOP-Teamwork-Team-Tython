@@ -1,6 +1,8 @@
-﻿using Diablo.GUI;
+﻿using System;
+using Diablo.GUI;
+using Diablo.Logic.Items;
 
-namespace Diablo.Characters.Heroes
+namespace Diablo.Logic.Characters.Heroes
 {
     public class Sorcerer : BaseCharacter
     {

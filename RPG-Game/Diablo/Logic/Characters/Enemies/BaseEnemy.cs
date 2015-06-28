@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Diablo.Characters.Heroes;
 using Diablo.Interfaces;
-using Diablo.Items;
+using Diablo.Logic.Items;
 
-namespace Diablo.Characters.Enemies
+namespace Diablo.Logic.Characters.Enemies
 {
     public abstract class BaseEnemy : GameObject, ICharacter
     {

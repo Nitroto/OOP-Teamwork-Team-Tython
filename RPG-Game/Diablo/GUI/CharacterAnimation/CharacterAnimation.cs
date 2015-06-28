@@ -15,7 +15,6 @@ namespace Diablo.GUI.CharacterAnimation
         protected bool dies = false;
         protected bool isAlive = true;
 
-
         public CharacterAnimation(Vector2 position)
             : base(position)
         {
@@ -24,11 +23,9 @@ namespace Diablo.GUI.CharacterAnimation
 
         }
 
-
         public string ImgSource { get; set; }
         public CharacterType CharacterType { get; set; }
         public int[] Frames { get; set; }
-
 
         public void LoadContentent(ContentManager contentManager)
         {

@@ -1,7 +1,6 @@
-﻿using Diablo.GUI;
-using Diablo.Interfaces;
+﻿using Diablo.Interfaces;
 
-namespace Diablo.Characters.Heroes
+namespace Diablo.Logic.Characters.Heroes
 {
     public class Rogue : BaseCharacter, IShield
     {

@@ -1,9 +1,8 @@
 ﻿using System;
-using Diablo.Characters.Enemies;
-using Diablo.Characters.Heroes;
 using Diablo.Interfaces;
+using Diablo.Logic.Characters.Enemies;
 
-namespace Diablo.Factories
+namespace Diablo.Logic.Factories
 {
     class EnemyFactory
     {
@@ -15,7 +14,7 @@ namespace Diablo.Factories
                 case 1: 
                     return new Orc();
                 case 2:
-                    return new Troll();
+                    return new GreyTroll();
                 default:
                     return new Zombie();
             }

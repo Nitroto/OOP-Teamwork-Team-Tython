@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using Diablo.Interfaces;
-using Diablo.Items;
+using Diablo.Logic.Items;
 
-namespace Diablo.Characters.Heroes
+namespace Diablo.Logic.Characters.Heroes
 {
     public abstract class BaseCharacter : GameObject, ICharacter
     {
+        private List<IItem> items;
 
         protected BaseCharacter(string name, int health, int damage, int mana)
             : base(name)
@@ -18,7 +19,17 @@ namespace Diablo.Characters.Heroes
         }
 
         public int Health { get; set; }
-        public List<IItem> Items { get; set; }
+        public List<IItem> Items
+        {
+            get
+            {
+                return this.items;
+            }
+            set
+            {
+                this.items = value;
+            }
+        }
         public int Mana { get; set; }
         public int Damage { get; set; }
         public bool IsAlive { get; set; }

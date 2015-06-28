@@ -1,7 +1,6 @@
-﻿using System;
-using Diablo.Exceptions;
+﻿using Diablo.Exceptions;
 
-namespace Diablo
+namespace Diablo.Logic
 {
     public abstract class GameObject
     {

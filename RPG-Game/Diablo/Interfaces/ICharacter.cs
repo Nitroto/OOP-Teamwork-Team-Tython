@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Diablo.Items;
+﻿using Diablo.Logic.Items;
+using System.Collections.Generic;
 
 namespace Diablo.Interfaces
 {
@@ -7,7 +7,7 @@ namespace Diablo.Interfaces
     {
         int Damage { get; set; }
         int Health { get; set; }
-        List<IItem> Items { get; set; } 
+        List<IItem> Items { get; set; }
 
         void ApplyItems(Item item);
         void RemoveItems(Item item);

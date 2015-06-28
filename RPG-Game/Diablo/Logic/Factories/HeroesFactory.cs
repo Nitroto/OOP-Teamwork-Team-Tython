@@ -1,9 +1,9 @@
 ﻿using System;
-using Diablo.Characters.Heroes;
 using Diablo.Enums;
 using Diablo.Interfaces;
+using Diablo.Logic.Characters.Heroes;
 
-namespace Diablo.Factories
+namespace Diablo.Logic.Factories
 {
     class HeroesFactory
     {

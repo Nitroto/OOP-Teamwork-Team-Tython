@@ -1,6 +1,8 @@
-﻿using Diablo.Interfaces;
+﻿using System;
+using Diablo.Interfaces;
+using Diablo.Logic.Items;
 
-namespace Diablo.Characters.Heroes
+namespace Diablo.Logic.Characters.Heroes
 {
     public class Barbarian : BaseCharacter, IShield
     {
