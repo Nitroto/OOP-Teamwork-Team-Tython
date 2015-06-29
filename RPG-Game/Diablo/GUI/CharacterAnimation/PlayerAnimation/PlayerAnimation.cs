@@ -91,9 +91,9 @@ namespace Diablo.GUI.CharacterAnimation.PlayerAnimation
             }
         }
 
-        protected override void HandleAnimation()
+        protected override void HandleAnimation(KeyboardState keyState)
         {
-            KeyboardState keyState = Keyboard.GetState();
+            //KeyboardState keyState = Keyboard.GetState();
             if (!dies)
             {
                 if (!isHitted)

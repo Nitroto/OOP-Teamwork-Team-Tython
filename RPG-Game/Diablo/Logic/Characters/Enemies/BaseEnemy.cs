@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Diablo.Interfaces;
 using Diablo.Logic.Items;
 using Diablo.GUI.CharacterAnimation;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Diablo.Logic.Characters.Enemies
 {
@@ -25,6 +27,11 @@ namespace Diablo.Logic.Characters.Enemies
         public int Health { get; set; }
         public List<IItem> Items { get; set; }
 
+        public void Update(GameTime gameTime)
+        {
+            KeyboardState keyState = Keyboard.GetState();
+            this.CharacterAnimation.Update(gameTime, keyState);
+        }
 
         public void Attack(ICharacter hero)
         {

@@ -1,5 +1,6 @@
 ﻿using Diablo.Enums;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
 {
@@ -15,7 +16,7 @@ namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
             this.InitializeAnimation();
         }
 
-        protected override void HandleAnimation()
+        protected override void HandleAnimation(KeyboardState keyState)
         {
         }
     }

@@ -2,6 +2,9 @@
 using Diablo.Interfaces;
 using Diablo.Logic.Items;
 using Diablo.GUI.CharacterAnimation;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Diablo.GUI.StatusBarAnimation;
 
 namespace Diablo.Logic.Characters.Heroes
 {
@@ -17,10 +20,20 @@ namespace Diablo.Logic.Characters.Heroes
             this.Mana = mana;
             this.Items = new List<IItem>();
             this.IsAlive = true;
+            this.HealthAnimation = new Health((new Vector2(10, 400)));
+            this.ManaAnimation = new Mana((new Vector2(740, 400)));
         }
 
 
         public CharacterAnimation CharacterAnimation { get; set; }
+        public Health HealthAnimation { get; set; }
+        public Mana ManaAnimation { get; set; }
+
+        public void Update(GameTime gameTime)
+        {
+            KeyboardState keyState = Keyboard.GetState();
+            this.CharacterAnimation.Update(gameTime, keyState);
+        }
 
         public int Health { get; set; }
         public List<IItem> Items

@@ -1,6 +1,7 @@
 ﻿using Diablo.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
 namespace Diablo.GUI
@@ -45,7 +46,7 @@ namespace Diablo.GUI
             }
         }
 
-        public virtual void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime, KeyboardState keyState)
         {
             this.timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
             if (this.timeElapsed > this.timeToUpdate)

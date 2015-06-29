@@ -27,8 +27,6 @@ namespace Diablo
         private PlayerAnimation player;
         private EnemyAnimation[] enemys;
         private List<AnimatedSprite> animations = new List<AnimatedSprite>();
-        private StatusBar health;
-        private StatusBar mana;
 
         public Diablo()
         {
@@ -75,19 +73,19 @@ namespace Diablo
                 }
                 this.animations.Add(this.enemys[i]);
             }
-            this.health = new Health((new Vector2(10, 400)),this.mainCharacter as BaseCharacter);
-            this.mana = new Mana((new Vector2(740, 400)), this.mainCharacter as BaseCharacter);
-            this.animations.Add(this.health);
-            this.animations.Add(this.mana);
+            //this.health = new Health((new Vector2(10, 400)),this.mainCharacter as BaseCharacter);
+            //this.mana = new Mana((new Vector2(740, 400)), this.mainCharacter as BaseCharacter);
+            //this.animations.Add(this.health);
+            //this.animations.Add(this.mana);
             this.animations.Add(this.mainCharacter.CharacterAnimation);
             //Load Content calls
-            this.health.LoadContentent(Content);
+            (this.mainCharacter as BaseCharacter).HealthAnimation.LoadContentent(Content);
             this.mainCharacter.CharacterAnimation.LoadContentent(Content);
             foreach(EnemyAnimation enemy in enemys)
             {
                 enemy.LoadContentent(Content);
             }
-            this.mana.LoadContentent(Content);
+            (this.mainCharacter as BaseCharacter).ManaAnimation.LoadContentent(Content);
         }
 
         /// <summary>
@@ -110,13 +108,11 @@ namespace Diablo
                 Exit();
 
             // TODO: Add your update logic here
-            //this.player.Update(gameTime);
-            foreach (AnimatedSprite animation in animations)
-            {
-                animation.Update(gameTime);
-            }
-           // this.health.Update(gameTime);
-           // this.mana.Update(gameTime);
+            this.mainCharacter.Update(gameTime);
+            //foreach (AnimatedSprite animation in animations)
+            //{
+            //    animation.Update(gameTime);
+            //}
             base.Update(gameTime);
         }
 
@@ -130,13 +126,12 @@ namespace Diablo
 
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
-            //this.health.Draw(spriteBatch);
-            //this.player.Draw(spriteBatch);
             foreach (AnimatedSprite animation in animations)
             {
                 animation.Draw(spriteBatch);
             }
-           // this.mana.Draw(spriteBatch);
+            (this.mainCharacter as BaseCharacter).HealthAnimation.Draw(spriteBatch);
+            (this.mainCharacter as BaseCharacter).ManaAnimation.Draw(spriteBatch);
             
             this.spriteBatch.End();
             base.Draw(gameTime);

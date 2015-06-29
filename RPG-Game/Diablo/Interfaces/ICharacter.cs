@@ -1,5 +1,6 @@
 ﻿using Diablo.GUI.CharacterAnimation;
 using Diablo.Logic.Items;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace Diablo.Interfaces
@@ -13,5 +14,6 @@ namespace Diablo.Interfaces
         void ApplyItems(Item item);
         void RemoveItems(Item item);
         CharacterAnimation CharacterAnimation { get; set; }
+        void Update(GameTime gameTime);
     }
 }
