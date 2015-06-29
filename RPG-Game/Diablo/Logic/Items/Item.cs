@@ -6,7 +6,7 @@ namespace Diablo.Logic.Items
 {
     public abstract class Item : GameObject, IItem
     {
-        protected static readonly Random rnd = new Random();
+        protected static readonly Random Rnd = new Random();
 
         protected Item(string name, int health, int damage, int mana) : base(name)
         {

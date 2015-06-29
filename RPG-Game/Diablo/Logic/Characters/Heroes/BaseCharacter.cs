@@ -18,6 +18,8 @@ namespace Diablo.Logic.Characters.Heroes
             this.Items = new List<IItem>();
             this.IsAlive = true;
         }
+
+
         public CharacterAnimation CharacterAnimation { get; set; }
 
         public int Health { get; set; }
@@ -32,6 +34,7 @@ namespace Diablo.Logic.Characters.Heroes
                 this.items = value;
             }
         }
+
         public int Mana { get; set; }
         public int Damage { get; set; }
         public bool IsAlive { get; set; }

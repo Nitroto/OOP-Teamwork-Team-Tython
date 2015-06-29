@@ -5,7 +5,7 @@
         private const int ExtraDamage = 0;
 
         public Axe()
-            : base("axe"+rnd.Next(0,1000), 0, ExtraDamage, 0)
+            : base("axe"+Rnd.Next(0,1000), 0, ExtraDamage, 0)
         {
         }
     }

@@ -5,7 +5,7 @@
         private const int ExtraDamage = 0;
 
         public ShortSword()
-            : base("sword"+rnd.Next(0,1000), 0, ExtraDamage, 0)
+            : base("sword"+Rnd.Next(0,1000), 0, ExtraDamage, 0)
         {
         }
     }
