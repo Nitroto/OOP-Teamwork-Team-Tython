@@ -5,7 +5,7 @@ using Diablo.Logic.Characters.Heroes;
 
 namespace Diablo.Logic.Factories
 {
-    class HeroesFactory
+    public class HeroesFactory
     {
         public ICharacter CreateHero(CharacterType hero, string name)
         {

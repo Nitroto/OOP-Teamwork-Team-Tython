@@ -2,7 +2,7 @@
 
 namespace Diablo.Interfaces
 {
-    interface ISizeable
+    public interface ISizeable
     {
         ItemSize Size { get; }
     }

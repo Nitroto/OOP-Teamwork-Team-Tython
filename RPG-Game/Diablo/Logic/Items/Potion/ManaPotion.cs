@@ -2,10 +2,12 @@
 
 namespace Diablo.Logic.Items.Potion
 {
-    class ManaPotion:Potion
+    public class ManaPotion : Potion
     {
+        private const int DefaultHealth = 0;
+
         public ManaPotion(ItemSize size)
-            :base(size)
+            :base(size,DefaultHealth,(int)size)
         {
         }
     }

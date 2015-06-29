@@ -5,11 +5,10 @@ namespace Diablo.Logic.Items.Potion
 {
     public abstract class Potion : Item, ISizeable
     {
-        new private const int Health = 0;
-        new private const int Mana = 0;
+        private const int DefaultDamage = 0;
 
-        public Potion(ItemSize size)
-            : base("potion" + Rnd.Next(1000, 2000), Health, 0, Mana)
+        protected Potion(ItemSize size, int health, int mana)
+            : base("potion" + Rnd.Next(1000, 2000), health, DefaultDamage, mana)
         {
             this.Size = size;
         }

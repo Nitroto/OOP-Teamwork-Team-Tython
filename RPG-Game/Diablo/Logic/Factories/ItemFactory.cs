@@ -5,11 +5,12 @@ using Diablo.Logic.Items;
 
 namespace Diablo.Logic.Factories
 {
-    class ItemFactory
+    public class ItemFactory
     {
         public IItem CreateItem()
         {
             Random rnd = new Random();
+
             switch (rnd.Next(1,17))
             {
                 //case 1:
