@@ -2,9 +2,9 @@
 {
     public enum ItemSize
     {
-        Small = 50,
-        Medium = 55,
-        Large = 67,
-        Superb = 75
+        Small = 20,
+        Medium = 40,
+        Large = 60,
+        Superb = 80
     }
 }

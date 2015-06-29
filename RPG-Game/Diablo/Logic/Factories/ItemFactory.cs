@@ -10,6 +10,7 @@ namespace Diablo.Logic.Factories
         public IItem CreateItem()
         {
             Random rnd = new Random();
+
             switch (rnd.Next(1,17))
             {
                 //case 1:
