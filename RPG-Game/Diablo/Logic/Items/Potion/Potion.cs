@@ -8,7 +8,7 @@ namespace Diablo.Logic.Items.Potion
         new private const int Health = 0;
         new private const int Mana = 0;
 
-        public Potion(ItemSize size)
+        protected Potion(ItemSize size)
             : base("potion" + Rnd.Next(1000, 2000), Health, 0, Mana)
         {
             this.Size = size;

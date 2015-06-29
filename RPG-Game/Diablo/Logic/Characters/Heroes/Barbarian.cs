@@ -1,6 +1,4 @@
-﻿using System;
-using Diablo.Interfaces;
-using Diablo.Logic.Items;
+﻿using Diablo.Interfaces;
 
 namespace Diablo.Logic.Characters.Heroes
 {

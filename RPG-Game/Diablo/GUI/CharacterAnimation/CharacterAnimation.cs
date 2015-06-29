@@ -15,7 +15,7 @@ namespace Diablo.GUI.CharacterAnimation
         protected bool dies = false;
         protected bool isAlive = true;
 
-        public CharacterAnimation(Vector2 position)
+        protected CharacterAnimation(Vector2 position)
             : base(position)
         {
             this.FramesPerSecond = 13;

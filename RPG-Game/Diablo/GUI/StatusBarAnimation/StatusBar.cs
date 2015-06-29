@@ -9,7 +9,7 @@ namespace Diablo.GUI.StatusBarAnimation
     {
         protected Rectangle[] sRectangles;
         protected int counter = 1;
-        public StatusBar(Vector2 position, string imgSource, BaseCharacter character)
+        protected StatusBar(Vector2 position, string imgSource, BaseCharacter character)
             : base(position)
         {
             this.sRectangles = new Rectangle[50];

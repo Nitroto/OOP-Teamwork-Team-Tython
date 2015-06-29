@@ -5,7 +5,7 @@ namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
 {
     public abstract class EnemyAnimation: CharacterAnimation
     {
-        public EnemyAnimation(Vector2 position, CharacterType characterType)
+        protected EnemyAnimation(Vector2 position, CharacterType characterType)
             : base(position)
         {
             this.CharacterType = characterType;

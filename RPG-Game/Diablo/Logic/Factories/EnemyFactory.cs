@@ -4,7 +4,7 @@ using Diablo.Logic.Characters.Enemies;
 
 namespace Diablo.Logic.Factories
 {
-    class EnemyFactory
+    public class EnemyFactory
     {
         public ICharacter CreateCharacter()
         {

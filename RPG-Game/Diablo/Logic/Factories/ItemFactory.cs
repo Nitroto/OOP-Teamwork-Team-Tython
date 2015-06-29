@@ -5,7 +5,7 @@ using Diablo.Logic.Items;
 
 namespace Diablo.Logic.Factories
 {
-    class ItemFactory
+    public class ItemFactory
     {
         public IItem CreateItem()
         {

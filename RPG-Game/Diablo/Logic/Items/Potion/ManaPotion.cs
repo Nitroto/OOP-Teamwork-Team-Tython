@@ -2,7 +2,7 @@
 
 namespace Diablo.Logic.Items.Potion
 {
-    class ManaPotion:Potion
+    public class ManaPotion:Potion
     {
         public ManaPotion(ItemSize size)
             :base(size)

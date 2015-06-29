@@ -4,7 +4,7 @@ using System;
 
 namespace Diablo.GUI.StatusBarAnimation
 {
-    class Inventory : StatusBar
+    public class Inventory : StatusBar
     {
         private const string imgSource = @"res/bars/inventory.png";
 

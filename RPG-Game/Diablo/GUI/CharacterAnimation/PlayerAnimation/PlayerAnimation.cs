@@ -8,7 +8,7 @@ namespace Diablo.GUI.CharacterAnimation.PlayerAnimation
     {
         private bool castSpell = false;
 
-        public PlayerAnimation(Vector2 position, CharacterType characterType)
+        protected PlayerAnimation(Vector2 position, CharacterType characterType)
             : base(position)
         {
             this.CharacterType = characterType;
