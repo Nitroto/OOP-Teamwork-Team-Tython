@@ -1,7 +1,8 @@
-﻿namespace Diablo.Interfaces
+﻿using Microsoft.Xna.Framework;
+namespace Diablo.Interfaces
 {
     public interface IManaregenable
     {
-        void ManaRegen();
+        void ManaRegen(GameTime gameTime);
     }
 }

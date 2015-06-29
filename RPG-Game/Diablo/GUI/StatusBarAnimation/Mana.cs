@@ -22,16 +22,25 @@ namespace Diablo.GUI.StatusBarAnimation
         }
         public override void Update(GameTime gameTime, KeyboardState keyState)
         {
-            int mana = 150;
-            float percentage = (float)mana / (float)this.MaxQuantity;
-            int frame = (int)(percentage * 49);
+            //int mana = 150;
+            //float percentage = (float)mana / (float)this.MaxQuantity;
+            //int frame = (int)(percentage * 49);
 
-            if (counter < frame)
-            {
-                this.FrameToShow = this.sRectangles[this.counter];
-                this.sPosition.Y++;
-                this.counter++;
-            }
+            //if (counter < frame)
+            //{
+            //    this.FrameToShow = this.sRectangles[this.counter];
+            //    this.sPosition.Y++;
+            //    this.counter++;
+            //}
+        }
+        public void Decrease(int mana, int maxMana)
+        {
+            float percentage = (float)mana / (float)maxMana;
+            int frame = 49 - (int)(percentage * 49);
+
+            this.FrameToShow = this.sRectangles[frame];
+            this.sPosition.Y = 400 + frame;
+
         }
     }
 }

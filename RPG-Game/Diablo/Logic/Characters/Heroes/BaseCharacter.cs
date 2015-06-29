@@ -5,10 +5,11 @@ using Diablo.GUI.CharacterAnimation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Diablo.GUI.StatusBarAnimation;
+using System;
 
 namespace Diablo.Logic.Characters.Heroes
 {
-    public abstract class BaseCharacter : GameObject, ICharacter
+    public abstract class BaseCharacter : GameObject, ICharacter, IManaregenable
     {
         private List<IItem> items;
 
@@ -28,12 +29,30 @@ namespace Diablo.Logic.Characters.Heroes
         public CharacterAnimation CharacterAnimation { get; set; }
         public Health HealthAnimation { get; set; }
         public Mana ManaAnimation { get; set; }
-
+        public TimeSpan LastCast { get; set; }
         public void Update(GameTime gameTime)
         {
             KeyboardState keyState = Keyboard.GetState();
             this.CharacterAnimation.Update(gameTime, keyState);
+            this.HandleUserInput(keyState, gameTime);
+            
+            //regen mana
+            this.ManaRegen(gameTime);
+            this.DecreaseMana();
         }
+
+        protected virtual void HandleUserInput(KeyboardState keyState, GameTime gameTime)
+        {
+            
+            if (keyState.IsKeyDown(Keys.Up) && gameTime.TotalGameTime - this.LastCast > new TimeSpan(0,0,2))
+            {
+                this.CastSpell();
+                this.DecreaseMana();
+                this.LastCast = gameTime.TotalGameTime;
+            }
+        }
+
+
 
         public int Health { get; set; }
         public List<IItem> Items
@@ -93,5 +112,12 @@ namespace Diablo.Logic.Characters.Heroes
                 enemy.IsAlive = false;
             }
         }
+
+
+        public abstract void CastSpell();
+        public abstract void DecreaseMana();
+        public abstract void IncreaseMana();
+
+        public abstract void ManaRegen(GameTime gameTime);
     }
 }

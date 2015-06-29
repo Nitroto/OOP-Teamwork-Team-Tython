@@ -56,5 +56,8 @@ namespace Diablo.Logic.Characters.Enemies
                 this.IsAlive = false;
             }
         }
+        public virtual void CastSpell()
+        {
+        }
     }
 }

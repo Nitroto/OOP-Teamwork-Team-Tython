@@ -126,6 +126,7 @@ namespace Diablo.GUI.CharacterAnimation.PlayerAnimation
             else
             {
                 this.RunAnimation("Die");
+                this.dies = true;
             }
 
             // To be removed

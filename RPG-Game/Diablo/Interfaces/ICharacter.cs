@@ -15,5 +15,6 @@ namespace Diablo.Interfaces
         void RemoveItems(Item item);
         CharacterAnimation CharacterAnimation { get; set; }
         void Update(GameTime gameTime);
+        void CastSpell();
     }
 }
