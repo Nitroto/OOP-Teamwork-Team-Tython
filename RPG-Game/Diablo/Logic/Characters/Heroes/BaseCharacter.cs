@@ -9,20 +9,25 @@ using System;
 
 namespace Diablo.Logic.Characters.Heroes
 {
+    public delegate void OnHealthChangeEventHandler(BaseCharacter sender, HealthChangedEventArgs args);
     public abstract class BaseCharacter : GameObject, ICharacter, IManaregenable
     {
+        public event OnHealthChangeEventHandler HealthChange;
+        private int health;
         private List<IItem> items;
 
         protected BaseCharacter(string name, int health, int damage, int mana)
             : base(name)
         {
             this.Health = health;
+            this.InitialHealth = health;
             this.Damage = damage;
             this.Mana = mana;
             this.Items = new List<IItem>();
             this.IsAlive = true;
             this.HealthAnimation = new Health((new Vector2(10, 400)));
             this.ManaAnimation = new Mana((new Vector2(740, 400)));
+            this.HealthChange += BaseCharacter_HealthChange;
         }
 
 
@@ -30,6 +35,7 @@ namespace Diablo.Logic.Characters.Heroes
         public Health HealthAnimation { get; set; }
         public Mana ManaAnimation { get; set; }
         public TimeSpan LastCast { get; set; }
+        public TimeSpan LastHitTaken { get; set; }
         public void Update(GameTime gameTime)
         {
             KeyboardState keyState = Keyboard.GetState();
@@ -38,7 +44,7 @@ namespace Diablo.Logic.Characters.Heroes
             
             //regen mana
             this.ManaRegen(gameTime);
-            this.DecreaseMana();
+            this.IncreaseMana();
         }
 
         protected virtual void HandleUserInput(KeyboardState keyState, GameTime gameTime)
@@ -50,11 +56,41 @@ namespace Diablo.Logic.Characters.Heroes
                 this.DecreaseMana();
                 this.LastCast = gameTime.TotalGameTime;
             }
+            if (keyState.IsKeyDown(Keys.Left) && gameTime.TotalGameTime - this.LastHitTaken > new TimeSpan(0, 0, 0, 0, 400))
+            {
+                // for test
+                this.Health -= 10;
+                this.LastHitTaken = gameTime.TotalGameTime;
+            }
+        }
+
+        protected virtual void BaseCharacter_HealthChange(BaseCharacter sender, HealthChangedEventArgs args)
+        {
+
         }
 
 
 
-        public int Health { get; set; }
+        public int Health { get { return this.health; }
+            set 
+            {
+                if (this.HealthChange != null)
+                {
+                    this.HealthChange(this,
+                        new HealthChangedEventArgs(value, this.InitialHealth));
+                }
+                if (value < 0)
+                {
+                    this.health = 0;
+                }
+                else
+                {
+                    this.health = value;
+                }
+                
+            }
+        }
+        public int InitialHealth { get; set; }
         public List<IItem> Items
         {
             get

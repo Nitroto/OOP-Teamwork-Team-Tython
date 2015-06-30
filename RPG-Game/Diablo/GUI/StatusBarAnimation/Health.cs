@@ -33,5 +33,14 @@ namespace Diablo.GUI.StatusBarAnimation
             }
 
         }
+        public void ReRenderHealthBar(int health, int maxHealth)
+        {
+            float percentage = (float)health / (float)maxHealth;
+            int frame = 49 - (int)(percentage * 49);
+
+            this.FrameToShow = this.sRectangles[frame];
+            this.sPosition.Y = 400 + frame;
+
+        }
     }
 }
