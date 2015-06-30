@@ -6,14 +6,14 @@ namespace Diablo.Logic.Characters.Heroes
 {
     public class Barbarian : BaseCharacter, IShield
     {
-        private new const int Health = 300;
-        private new const int Damage = 32;
+        private const int DefauldHealth = 300;
+        private const int DefaultDamage = 32;
         private const int InitialMana = 64;
         private const int ManaCastCost = 8;
 
 
         public Barbarian(string name)
-            : base(name, Health, Damage, InitialMana)
+            : base(name, DefauldHealth, DefaultDamage, InitialMana)
         {
             this.CharacterAnimation = new BarbarianAnimation(new Vector2(-30, -20));
         }

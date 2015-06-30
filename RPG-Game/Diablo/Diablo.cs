@@ -21,19 +21,23 @@ namespace Diablo
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private const int maxEnemis = 10;
-        private static Random rnd = new Random();
-        private ICharacter mainCharacter;
+        private const int maxEnemies = 10;
+        private static Random Rnd = new Random();
         private PlayerAnimation player;
-        private EnemyAnimation[] enemys;
-        private List<AnimatedSprite> animations = new List<AnimatedSprite>();
+        private EnemyAnimation[] enemies;
+        private List<AnimatedSprite> animations;
+        public List<BaseCharacter> heroes;
 
         public Diablo()
         {
+            animations = new List<AnimatedSprite>();
+            heroes = new List<BaseCharacter>();
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
         }
 
+
+        private ICharacter MainCharacter { get; set; }
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -57,35 +61,36 @@ namespace Diablo
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            this.mainCharacter = new Barbarian("barbarian");
+
+            this.MainCharacter = new Rogue("rogue");
             //this.player = new SorcererAnimation(new Vector2(-30,-20));
-            enemys = new EnemyAnimation[maxEnemis];
-            for (int i = 0; i < this.enemys.Length; i++)
+            enemies = new EnemyAnimation[maxEnemies];
+            for (int i = 0; i < this.enemies.Length; i++)
             {
-                int x = rnd.Next(0, 750);
-                int y = rnd.Next(0, 350);
-                CharacterType enemyType = (CharacterType)rnd.Next(3, 6);
+                int x = Rnd.Next(0, 750);
+                int y = Rnd.Next(0, 350);
+                CharacterType enemyType = (CharacterType)Rnd.Next(3, 6);
                 switch (enemyType)
                 {
-                    case CharacterType.GreyTroll: this.enemys[i] = new GreyTrollAnimation(new Vector2(x,y));break;
-                    case CharacterType.Orc: this.enemys[i] = new OrcAnimation(new Vector2(x, y));break;
-                    case CharacterType.Zombie: this.enemys[i] = new ZombieAnimation(new Vector2(x, y));break;
+                    case CharacterType.GreyTroll: this.enemies[i] = new GreyTrollAnimation(new Vector2(x,y));break;
+                    case CharacterType.Orc: this.enemies[i] = new OrcAnimation(new Vector2(x, y));break;
+                    case CharacterType.Zombie: this.enemies[i] = new ZombieAnimation(new Vector2(x, y));break;
                 }
-                this.animations.Add(this.enemys[i]);
+                this.animations.Add(this.enemies[i]);
             }
             //this.health = new Health((new Vector2(10, 400)),this.mainCharacter as BaseCharacter);
             //this.mana = new Mana((new Vector2(740, 400)), this.mainCharacter as BaseCharacter);
             //this.animations.Add(this.health);
             //this.animations.Add(this.mana);
-            this.animations.Add(this.mainCharacter.CharacterAnimation);
+            this.animations.Add(this.MainCharacter.CharacterAnimation);
             //Load Content calls
-            (this.mainCharacter as BaseCharacter).HealthAnimation.LoadContentent(Content);
-            this.mainCharacter.CharacterAnimation.LoadContentent(Content);
-            foreach(EnemyAnimation enemy in enemys)
+            (this.MainCharacter as BaseCharacter).HealthAnimation.LoadContentent(Content);
+            this.MainCharacter.CharacterAnimation.LoadContentent(Content);
+            foreach(EnemyAnimation enemy in enemies)
             {
                 enemy.LoadContentent(Content);
             }
-            (this.mainCharacter as BaseCharacter).ManaAnimation.LoadContentent(Content);
+            (this.MainCharacter as BaseCharacter).ManaAnimation.LoadContentent(Content);
         }
 
         /// <summary>
@@ -108,7 +113,7 @@ namespace Diablo
                 Exit();
 
             // TODO: Add your update logic here
-            this.mainCharacter.Update(gameTime);
+            this.MainCharacter.Update(gameTime);
             //foreach (AnimatedSprite animation in animations)
             //{
             //    animation.Update(gameTime);
@@ -130,8 +135,8 @@ namespace Diablo
             {
                 animation.Draw(spriteBatch);
             }
-            (this.mainCharacter as BaseCharacter).HealthAnimation.Draw(spriteBatch);
-            (this.mainCharacter as BaseCharacter).ManaAnimation.Draw(spriteBatch);
+            (this.MainCharacter as BaseCharacter).HealthAnimation.Draw(spriteBatch);
+            (this.MainCharacter as BaseCharacter).ManaAnimation.Draw(spriteBatch);
             
             this.spriteBatch.End();
             base.Draw(gameTime);

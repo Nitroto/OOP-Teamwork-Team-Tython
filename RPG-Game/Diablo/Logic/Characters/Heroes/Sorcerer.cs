@@ -5,13 +5,13 @@ namespace Diablo.Logic.Characters.Heroes
 {
     public class Sorcerer : BaseCharacter
     {
-        private const int Health = 120;
-        private const int Damage = 8;
+        private const int DefaultHealth = 120;
+        private const int DefaultDamage = 8;
         private const int InitialMana = 400;
         private const int ManaCastCost = 22;
 
         public Sorcerer(string name)
-            : base(name, Health, Damage, InitialMana)
+            : base(name, DefaultHealth, DefaultDamage, InitialMana)
         {
             this.CharacterAnimation = new SorcererAnimation(new Vector2(-30, -20));
         }
