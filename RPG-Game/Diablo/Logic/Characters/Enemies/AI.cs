@@ -101,7 +101,8 @@ namespace Diablo.Logic.Characters.Enemies
 
         private void HittingTheHero()
         {
-            //TODO Hitting the hero.
+            this.Enemy.Attack(this.Hero);
+            //TODO ADD ANIMATION
         }
 
 
@@ -110,9 +111,9 @@ namespace Diablo.Logic.Characters.Enemies
             float enemyX = this.Enemy.CharacterAnimation.sPosition.X;
             float enemyY = this.Enemy.CharacterAnimation.sPosition.X;
 
-            bool isInRadius = enemyX * enemyX + enemyY * enemyY <= EnemyRange * EnemyRange;
+            bool isInRange = enemyX * enemyX + enemyY * enemyY <= EnemyRange * EnemyRange;
 
-            return isInRadius;
+            return isInRange;
         }
     }
 }
