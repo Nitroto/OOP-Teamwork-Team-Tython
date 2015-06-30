@@ -3,48 +3,116 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Diablo.Logic.Characters.Heroes;
+using Microsoft.Xna.Framework.Input;
 
 namespace Diablo.Logic.Characters.Enemies
 {
     public class AI
     {
-        //public Vector2 currentTargetSquare;
-        //private Vector2 getNewTargetSquare()
-        //{
-        //    List<Vector2> path = PathFinder.FindPath(
-        //        TileMap.GetSquareAtPixel(EnemyBase.WorldCenter),
-        //        TileMap.GetSquareAtPixel(Player.BaseSprite.WorldCenter));
+        private const int CharWidthHeigth = 96;
+        private const int EnemyRange = CharWidthHeigth*2;
+        private int positionCounter;
+        private bool patrolLeft = false;
 
-        //    if (path.Count > 1)
-        //    {
-        //        return new Vector2(path[1].X, path[1].Y);
-        //    }
-        //    else
-        //    {
-        //        return TileMap.GetSquareAtPixel(
-        //            Player.BaseSprite.WorldCenter);
-        //    }
-        //}
-        //private Vector2 determineMoveDirection()
-        //{
-        //    if (reachedTargetSquare())
-        //    {
-        //        currentTargetSquare = getNewTargetSquare();
-        //    }
+        public AI(Diablo diablo,BaseEnemy enemy, Vector2 currentPosition)
+        {
+            this.Diablo = diablo;
+            this.Enemy = enemy;
+            this.CurrentPosition = currentPosition;
+            positionCounter = 0;
+        }
 
-        //    Vector2 squareCenter = TileMap.GetSquareCenter(
-        //        currentTargetSquare);
 
-        //    return squareCenter - EnemyBase.WorldCenter;
-        //}
+        public Diablo Diablo { get; private set; }
+        public BaseEnemy Enemy { get;private set; }
+        public Vector2 CurrentPosition { get; private set; }
+        public BaseCharacter Hero { get; private set; }
 
-        //private bool reachedTargetSquare()
-        //{
-        //    return (
-        //        Vector2.Distance(
-        //            EnemyBase.WorldCenter,
-        //            TileMap.GetSquareCenter(currentTargetSquare))
-        //        <= 2);
-        //}
+        public void GetNewPosition()
+        {
+            if (HeroInRange())
+            {
+                GetCloserToHero();
+            }
+            else
+            {
+                RotatePatrol();
+
+                if (this.patrolLeft)
+                {
+                    this.Enemy.CharacterAnimation.sPosition.Y--;
+                }
+                else
+                {
+                    this.Enemy.CharacterAnimation.sPosition.Y++;
+                }
+
+                this.positionCounter++;
+            }
+        }
+
+        private void GetCloserToHero()
+        {
+            if (this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.CharacterAnimation.sPosition.Y)
+            {
+                this.Enemy.CharacterAnimation.sPosition.Y++;
+            }
+            else if (this.Hero.CharacterAnimation.sPosition.Y < this.Enemy.CharacterAnimation.sPosition.Y)
+            {
+                this.Enemy.CharacterAnimation.sPosition.Y--;
+            }
+
+
+            if (this.Hero.CharacterAnimation.sPosition.X > this.Enemy.CharacterAnimation.sPosition.X)
+            {
+                this.Enemy.CharacterAnimation.sPosition.X++;
+            }
+            else if (this.Hero.CharacterAnimation.sPosition.X < this.Enemy.CharacterAnimation.sPosition.X)
+            {
+                this.Enemy.CharacterAnimation.sPosition.X--;
+            }
+
+            bool inRangeToHit = this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.CharacterAnimation.sPosition.Y - 1
+                                || this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.CharacterAnimation.sPosition.Y + 1
+                                && this.Hero.CharacterAnimation.sPosition.X < this.Enemy.CharacterAnimation.sPosition.X - 1
+                                || this.Hero.CharacterAnimation.sPosition.X < this.Enemy.CharacterAnimation.sPosition.X + 1;
+
+            if (inRangeToHit)
+            {
+                HittingTheHero();
+            }
+        }
+
+        private void RotatePatrol()
+        {
+            if (this.positionCounter%5 == 0)
+            {
+                if (this.patrolLeft)
+                {
+                    this.patrolLeft = false;
+                }
+                else
+                {
+                    this.patrolLeft = true;
+                }
+            }
+        }
+
+        private void HittingTheHero()
+        {
+            //TODO Hitting the hero.
+        }
+
+
+        private bool HeroInRange()
+        {
+            float enemyX = this.Enemy.CharacterAnimation.sPosition.X;
+            float enemyY = this.Enemy.CharacterAnimation.sPosition.X;
+
+            bool isInRadius = enemyX * enemyX + enemyY * enemyY <= EnemyRange * EnemyRange;
+
+            return isInRadius;
+        }
     }
 }

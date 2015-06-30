@@ -10,7 +10,7 @@ namespace Diablo.GUI
     {
         protected const int FrameWidth = 96;
         protected const int FrameHeight = 96;
-        protected Vector2 sPosition;
+        public Vector2 sPosition;
         protected Texture2D sTexture;
         private Rectangle[] sRectangles;
         private int frameIndex;
