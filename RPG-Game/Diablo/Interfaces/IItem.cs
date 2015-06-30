@@ -1,6 +1,4 @@
-﻿using Diablo.Enums;
-
-namespace Diablo.Interfaces
+﻿namespace Diablo.Interfaces
 {
     public interface IItem
     {

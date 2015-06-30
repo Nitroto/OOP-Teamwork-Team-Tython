@@ -7,8 +7,8 @@ namespace Diablo.Logic.Characters.Heroes
 {
     public class Rogue : BaseCharacter, IShield
     {
-        private new const int Health = 180;
-        private new const int Damage = 20;
+        private const int Health = 180;
+        private const int Damage = 20;
         private const int InitialMana = 90;
         private const int ManaCastCost = 10;
         private Random rnd = new Random();
@@ -20,7 +20,9 @@ namespace Diablo.Logic.Characters.Heroes
         }
 
         public int Shield { get; set; }
+
         public TimeSpan TimeSinceLastRegen { get; set; }
+
         public override void CastSpell()
         {
             if (base.Mana >= ManaCastCost)
@@ -46,7 +48,7 @@ namespace Diablo.Logic.Characters.Heroes
         public override void ManaRegen(GameTime gameTime)
         {
 
-            if (base.Mana < InitialMana && gameTime.TotalGameTime - TimeSinceLastRegen > new TimeSpan(0,0,2))
+            if (base.Mana < InitialMana && gameTime.TotalGameTime - TimeSinceLastRegen > new TimeSpan(0, 0, 2))
             {
                 base.Mana++;
                 TimeSinceLastRegen = gameTime.TotalGameTime;
