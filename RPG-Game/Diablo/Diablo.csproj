@@ -49,6 +49,10 @@
     <Compile Include="Logic\Characters\Heroes\Rogue.cs" />
     <Compile Include="Logic\Characters\Heroes\Sorcerer.cs" />
     <Compile Include="Exceptions\InvalidOrNullNameException.cs" />
+    <Compile Include="Logic\Characters\Heroes\Spells\CriticalStrike.cs" />
+    <Compile Include="Logic\Characters\Heroes\Spells\FireBolt.cs" />
+    <Compile Include="Logic\Characters\Heroes\Spells\Shout.cs" />
+    <Compile Include="Logic\Characters\Heroes\Spells\Spell.cs" />
     <Compile Include="Logic\Factories\EnemyFactory.cs" />
     <Compile Include="Logic\Factories\HeroesFactory.cs" />
     <Compile Include="Logic\Factories\ItemFactory.cs" />
