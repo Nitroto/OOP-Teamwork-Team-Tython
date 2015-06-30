@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Diablo.Interfaces;
 using Diablo.Logic.Characters.Heroes;
 using Microsoft.Xna.Framework.Input;
 
@@ -15,18 +16,14 @@ namespace Diablo.Logic.Characters.Enemies
         private int positionCounter;
         private bool patrolLeft = false;
 
-        public AI(Diablo diablo,BaseEnemy enemy, Vector2 currentPosition)
+        public AI(BaseCharacter hero,BaseEnemy enemy)
         {
-            this.Diablo = diablo;
+            this.Hero = hero;
             this.Enemy = enemy;
-            this.CurrentPosition = currentPosition;
             positionCounter = 0;
         }
 
-
-        public Diablo Diablo { get; private set; }
         public BaseEnemy Enemy { get;private set; }
-        public Vector2 CurrentPosition { get; private set; }
         public BaseCharacter Hero { get; private set; }
 
         public void GetNewPosition()
@@ -111,7 +108,12 @@ namespace Diablo.Logic.Characters.Enemies
             float enemyX = this.Enemy.CharacterAnimation.sPosition.X;
             float enemyY = this.Enemy.CharacterAnimation.sPosition.X;
 
-            bool isInRange = enemyX * enemyX + enemyY * enemyY <= EnemyRange * EnemyRange;
+            float heroX = this.Hero.CharacterAnimation.sPosition.X;
+            float heroY = this.Hero.CharacterAnimation.sPosition.Y;
+
+
+            bool isInRange = enemyX + EnemyRange > heroX && enemyX - EnemyRange < heroX
+                             && enemyY + EnemyRange > heroY && enemyY - EnemyRange < heroY;
 
             return isInRange;
         }
