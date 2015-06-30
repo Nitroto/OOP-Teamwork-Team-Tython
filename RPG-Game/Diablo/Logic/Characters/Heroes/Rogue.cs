@@ -7,14 +7,14 @@ namespace Diablo.Logic.Characters.Heroes
 {
     public class Rogue : BaseCharacter, IShield
     {
-        private const int Health = 180;
+        private const int InitialHealth = 180;
         private const int Damage = 20;
         private const int InitialMana = 90;
         private const int ManaCastCost = 10;
         private Random rnd = new Random();
 
         public Rogue(string name) :
-            base(name, Health, Damage, InitialMana)
+            base(name, InitialHealth, Damage, InitialMana)
         {
             this.CharacterAnimation = new RogueAnimation(new Vector2(-30, -20));
         }
@@ -35,15 +35,13 @@ namespace Diablo.Logic.Characters.Heroes
         {
             if (base.Mana >= ManaCastCost)
             {
-                this.ManaAnimation.Decrease(base.Mana, InitialMana);
+                this.ManaAnimation.ReRenderManaBar(base.Mana, InitialMana);
             }
 
         }
         public override void IncreaseMana()
         {
-
-            this.ManaAnimation.Decrease(base.Mana, InitialMana);
-
+            this.ManaAnimation.ReRenderManaBar(base.Mana, InitialMana);
         }
         public override void ManaRegen(GameTime gameTime)
         {
@@ -53,6 +51,10 @@ namespace Diablo.Logic.Characters.Heroes
                 base.Mana++;
                 TimeSinceLastRegen = gameTime.TotalGameTime;
             }
+        }
+        protected override void BaseCharacter_HealthChange(BaseCharacter sender, HealthChangedEventArgs args)
+        {
+            this.HealthAnimation.ReRenderHealthBar(base.Health, base.InitialHealth);
         }
     }
 }

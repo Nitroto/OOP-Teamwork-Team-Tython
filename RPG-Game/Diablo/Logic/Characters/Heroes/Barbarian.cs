@@ -30,7 +30,7 @@ namespace Diablo.Logic.Characters.Heroes
         }
         public override void IncreaseMana()
         {
-            this.ManaAnimation.Decrease(base.Mana, InitialMana);
+            this.ManaAnimation.ReRenderManaBar(base.Mana, InitialMana);
         }
         public override void ManaRegen(GameTime gameTime)
         {

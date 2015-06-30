@@ -46,6 +46,7 @@
     <Compile Include="Logic\Characters\Enemies\Zombie.cs" />
     <Compile Include="Logic\Characters\Heroes\Barbarian.cs" />
     <Compile Include="Logic\Characters\Heroes\BaseCharacter.cs" />
+    <Compile Include="Logic\Characters\Heroes\HealthChangedEventArgs.cs" />
     <Compile Include="Logic\Characters\Heroes\Rogue.cs" />
     <Compile Include="Logic\Characters\Heroes\Sorcerer.cs" />
     <Compile Include="Exceptions\InvalidOrNullNameException.cs" />

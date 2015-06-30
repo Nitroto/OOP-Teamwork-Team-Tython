@@ -33,7 +33,7 @@ namespace Diablo.GUI.StatusBarAnimation
             //    this.counter++;
             //}
         }
-        public void Decrease(int mana, int maxMana)
+        public void ReRenderManaBar(int mana, int maxMana)
         {
             float percentage = (float)mana / (float)maxMana;
             int frame = 49 - (int)(percentage * 49);
