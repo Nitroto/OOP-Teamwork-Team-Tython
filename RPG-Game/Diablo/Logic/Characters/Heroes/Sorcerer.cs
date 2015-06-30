@@ -8,6 +8,7 @@ namespace Diablo.Logic.Characters.Heroes
         private const int Health = 120;
         private const int Damage = 8;
         private const int InitialMana = 400;
+        private const int ManaCastCost = 22;
 
         public Sorcerer(string name)
             : base(name, Health, Damage, InitialMana)
@@ -17,23 +18,9 @@ namespace Diablo.Logic.Characters.Heroes
 
         public override void CastSpell()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override void DecreaseMana()
-        {
-            throw new System.NotImplementedException();
-        }
-        public override void IncreaseMana()
-        {
-            this.ManaAnimation.ReRenderManaBar(base.Mana, InitialMana);
-        }
-
-        public override void ManaRegen(GameTime gameTime)
-        {
-            if (base.Mana < InitialMana)
+            if (base.Mana >= ManaCastCost)
             {
-                base.Mana++;
+                base.Mana -= ManaCastCost;
             }
         }
     }

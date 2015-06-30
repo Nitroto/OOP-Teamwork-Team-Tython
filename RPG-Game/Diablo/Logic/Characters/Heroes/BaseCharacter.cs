@@ -9,11 +9,13 @@ using System;
 
 namespace Diablo.Logic.Characters.Heroes
 {
-    public delegate void OnHealthChangeEventHandler(BaseCharacter sender, HealthChangedEventArgs args);
+    public delegate void OnHealthOrManaChangeEventHandler(BaseCharacter sender, HealthChangedEventArgs args);
     public abstract class BaseCharacter : GameObject, ICharacter, IManaregenable
     {
-        public event OnHealthChangeEventHandler HealthChange;
+        public event OnHealthOrManaChangeEventHandler HealthChange;
+        public event OnHealthOrManaChangeEventHandler ManaChange;
         private int health;
+        private int mana;
         private List<IItem> items;
 
         protected BaseCharacter(string name, int health, int damage, int mana)
@@ -23,11 +25,13 @@ namespace Diablo.Logic.Characters.Heroes
             this.InitialHealth = health;
             this.Damage = damage;
             this.Mana = mana;
+            this.InitialMana = mana;
             this.Items = new List<IItem>();
             this.IsAlive = true;
             this.HealthAnimation = new Health((new Vector2(10, 400)));
             this.ManaAnimation = new Mana((new Vector2(740, 400)));
             this.HealthChange += BaseCharacter_HealthChange;
+            this.ManaChange += BaseCharacter_ManaChange;
         }
 
 
@@ -39,12 +43,12 @@ namespace Diablo.Logic.Characters.Heroes
         public void Update(GameTime gameTime)
         {
             KeyboardState keyState = Keyboard.GetState();
-            this.CharacterAnimation.Update(gameTime, keyState);
             this.HandleUserInput(keyState, gameTime);
+            this.CharacterAnimation.Update(gameTime, keyState);
+            
             
             //regen mana
             this.ManaRegen(gameTime);
-            this.IncreaseMana();
         }
 
         protected virtual void HandleUserInput(KeyboardState keyState, GameTime gameTime)
@@ -53,7 +57,6 @@ namespace Diablo.Logic.Characters.Heroes
             if (keyState.IsKeyDown(Keys.Up) && gameTime.TotalGameTime - this.LastCast > new TimeSpan(0,0,2))
             {
                 this.CastSpell();
-                this.DecreaseMana();
                 this.LastCast = gameTime.TotalGameTime;
             }
             if (keyState.IsKeyDown(Keys.Left) && gameTime.TotalGameTime - this.LastHitTaken > new TimeSpan(0, 0, 0, 0, 400))
@@ -63,14 +66,6 @@ namespace Diablo.Logic.Characters.Heroes
                 this.LastHitTaken = gameTime.TotalGameTime;
             }
         }
-
-        protected virtual void BaseCharacter_HealthChange(BaseCharacter sender, HealthChangedEventArgs args)
-        {
-
-        }
-
-
-
         public int Health { get { return this.health; }
             set 
             {
@@ -91,6 +86,7 @@ namespace Diablo.Logic.Characters.Heroes
             }
         }
         public int InitialHealth { get; set; }
+        public int InitialMana { get; set; }
         public List<IItem> Items
         {
             get
@@ -103,9 +99,30 @@ namespace Diablo.Logic.Characters.Heroes
             }
         }
 
-        public int Mana { get; set; }
+        public int Mana
+        {
+            get { return this.mana; }
+            set
+            {
+                if (this.ManaChange != null)
+                {
+                    this.ManaChange(this,
+                        new HealthChangedEventArgs(value, this.InitialMana));
+                }
+                if (value < 0)
+                {
+                    this.mana = 0;
+                }
+                else
+                {
+                    this.mana = value;
+                }
+
+            }
+        }
         public int Damage { get; set; }
         public bool IsAlive { get; set; }
+        public TimeSpan TimeSinceLastRegen { get; set; }
         void IKillable.IsDead(ICharacter enemy)
         {
             IsDead(enemy);
@@ -149,11 +166,24 @@ namespace Diablo.Logic.Characters.Heroes
             }
         }
 
-
         public abstract void CastSpell();
-        public abstract void DecreaseMana();
-        public abstract void IncreaseMana();
 
-        public abstract void ManaRegen(GameTime gameTime);
+        public void ManaRegen(GameTime gameTime)
+        {
+
+            if (this.Mana < InitialMana && gameTime.TotalGameTime - TimeSinceLastRegen > new TimeSpan(0, 0, 2))
+            {
+                this.Mana++;
+                TimeSinceLastRegen = gameTime.TotalGameTime;
+            }
+        }
+        private void BaseCharacter_HealthChange(BaseCharacter sender, HealthChangedEventArgs args)
+        {
+            this.HealthAnimation.ReRenderHealthBar(this.Health, this.InitialHealth);
+        }
+        private void BaseCharacter_ManaChange(BaseCharacter sender, HealthChangedEventArgs args)
+        {
+            this.ManaAnimation.ReRenderManaBar(this.Mana, this.InitialMana);
+        }
     }
 }

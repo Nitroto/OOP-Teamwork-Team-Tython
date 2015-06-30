@@ -9,6 +9,7 @@ namespace Diablo.Logic.Characters.Heroes
         private new const int Health = 300;
         private new const int Damage = 32;
         private const int InitialMana = 64;
+        private const int ManaCastCost = 8;
 
 
         public Barbarian(string name)
@@ -21,22 +22,9 @@ namespace Diablo.Logic.Characters.Heroes
 
         public override void CastSpell()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override void DecreaseMana()
-        {
-            throw new System.NotImplementedException();
-        }
-        public override void IncreaseMana()
-        {
-            this.ManaAnimation.ReRenderManaBar(base.Mana, InitialMana);
-        }
-        public override void ManaRegen(GameTime gameTime)
-        {
-            if (base.Mana < InitialMana)
+            if (base.Mana >= ManaCastCost)
             {
-                base.Mana++;
+                base.Mana -= ManaCastCost;
             }
         }
     }

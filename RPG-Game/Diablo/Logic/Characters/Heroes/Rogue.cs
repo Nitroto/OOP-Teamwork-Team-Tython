@@ -21,40 +21,12 @@ namespace Diablo.Logic.Characters.Heroes
 
         public int Shield { get; set; }
 
-        public TimeSpan TimeSinceLastRegen { get; set; }
-
         public override void CastSpell()
         {
             if (base.Mana >= ManaCastCost)
             {
                 base.Mana -= ManaCastCost;
             }
-        }
-
-        public override void DecreaseMana()
-        {
-            if (base.Mana >= ManaCastCost)
-            {
-                this.ManaAnimation.ReRenderManaBar(base.Mana, InitialMana);
-            }
-
-        }
-        public override void IncreaseMana()
-        {
-            this.ManaAnimation.ReRenderManaBar(base.Mana, InitialMana);
-        }
-        public override void ManaRegen(GameTime gameTime)
-        {
-
-            if (base.Mana < InitialMana && gameTime.TotalGameTime - TimeSinceLastRegen > new TimeSpan(0, 0, 2))
-            {
-                base.Mana++;
-                TimeSinceLastRegen = gameTime.TotalGameTime;
-            }
-        }
-        protected override void BaseCharacter_HealthChange(BaseCharacter sender, HealthChangedEventArgs args)
-        {
-            this.HealthAnimation.ReRenderHealthBar(base.Health, base.InitialHealth);
         }
     }
 }

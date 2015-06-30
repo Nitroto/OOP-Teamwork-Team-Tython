@@ -57,7 +57,7 @@ namespace Diablo
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            this.mainCharacter = new Rogue("rogue");
+            this.mainCharacter = new Barbarian("barbarian");
             //this.player = new SorcererAnimation(new Vector2(-30,-20));
             enemys = new EnemyAnimation[maxEnemis];
             for (int i = 0; i < this.enemys.Length; i++)
