@@ -1,16 +1,21 @@
-﻿using Diablo.Interfaces;
+﻿using Diablo.Enums;
+using Diablo.GUI;
+using Diablo.Interfaces;
 using Diablo.Logic.Characters.Heroes;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Diablo.Logic.Characters.Enemies
 {
     public class AI : IAI
     {
         private const int CharWidthHeigth = 96;
-        private const int EnemyRange = CharWidthHeigth*2;
+        private const int EnemyRange = CharWidthHeigth * 2;
         private int positionCounter;
         private bool patrolLeft;
 
-        public AI(BaseCharacter hero,BaseEnemy enemy)
+        public AI(BaseCharacter hero, BaseEnemy enemy)
         {
             this.Hero = hero;
             this.Enemy = enemy;
@@ -18,59 +23,68 @@ namespace Diablo.Logic.Characters.Enemies
             patrolLeft = false;
         }
 
-        public BaseEnemy Enemy { get;private set; }
+        public BaseEnemy Enemy { get; private set; }
         public BaseCharacter Hero { get; private set; }
+        public TimeSpan LastRotation { get; set; }
 
-        public void Action()
+        public void Action(GameTime gameTime)
         {
+
             if (HeroInRange())
             {
                 GetCloserToHero();
             }
             else
             {
-                RotatePatrol();
 
+                RotatePatrol(gameTime);
                 //TODO ADD ANIMATION
                 if (this.patrolLeft)
                 {
-                    this.Enemy.CharacterAnimation.sPosition.Y--;
+                    this.Enemy.EnemyAnimation.sPosition.Y--;
+                    this.Enemy.EnemyAnimation.AnimationDone();
+                    this.Enemy.EnemyAnimation.PositionAdjustment(new Vector2(0, -1), AnimationType.MoveUp, Direction.Up);
+                    ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
                 }
                 else
                 {
-                    this.Enemy.CharacterAnimation.sPosition.Y++;
+                    this.Enemy.EnemyAnimation.sPosition.Y++;
+                    this.Enemy.EnemyAnimation.AnimationDone();
+                    this.Enemy.EnemyAnimation.PositionAdjustment(new Vector2(0, +1), AnimationType.MoveDown, Direction.Down);
+                    ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
                 }
 
                 this.positionCounter++;
+
             }
         }
 
         private void GetCloserToHero()
         {
             //TODO ADD ANIMATION
-            if (this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.CharacterAnimation.sPosition.Y)
+            if (this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.EnemyAnimation.sPosition.Y)
             {
-                this.Enemy.CharacterAnimation.sPosition.Y++;
+                this.Enemy.EnemyAnimation.sPosition.Y++;
             }
-            else if (this.Hero.CharacterAnimation.sPosition.Y < this.Enemy.CharacterAnimation.sPosition.Y)
+            else if (this.Hero.CharacterAnimation.sPosition.Y < this.Enemy.EnemyAnimation.sPosition.Y)
             {
-                this.Enemy.CharacterAnimation.sPosition.Y--;
+                this.Enemy.EnemyAnimation.sPosition.Y--;
             }
 
             //TODO ADD ANIMATION
-            if (this.Hero.CharacterAnimation.sPosition.X > this.Enemy.CharacterAnimation.sPosition.X)
+            if (this.Hero.CharacterAnimation.sPosition.X > this.Enemy.EnemyAnimation.sPosition.X)
             {
-                this.Enemy.CharacterAnimation.sPosition.X++;
+                this.Enemy.EnemyAnimation.sPosition.X++;
             }
-            else if (this.Hero.CharacterAnimation.sPosition.X < this.Enemy.CharacterAnimation.sPosition.X)
+            else if (this.Hero.CharacterAnimation.sPosition.X < this.Enemy.EnemyAnimation.sPosition.X)
             {
-                this.Enemy.CharacterAnimation.sPosition.X--;
+                this.Enemy.EnemyAnimation.sPosition.X--;
             }
 
-            bool inRangeToHit = this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.CharacterAnimation.sPosition.Y - 1
-                                || this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.CharacterAnimation.sPosition.Y + 1
-                                && this.Hero.CharacterAnimation.sPosition.X < this.Enemy.CharacterAnimation.sPosition.X - 1
-                                || this.Hero.CharacterAnimation.sPosition.X < this.Enemy.CharacterAnimation.sPosition.X + 1;
+            bool inRangeToHit = this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.EnemyAnimation.sPosition.Y - 1
+                                || this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.EnemyAnimation.sPosition.Y + 1
+                                && this.Hero.CharacterAnimation.sPosition.X < this.Enemy.EnemyAnimation.sPosition.X - 1
+                                || this.Hero.CharacterAnimation.sPosition.X < this.Enemy.EnemyAnimation.sPosition.X + 1;
 
             if (inRangeToHit)
             {
@@ -78,17 +92,19 @@ namespace Diablo.Logic.Characters.Enemies
             }
         }
 
-        private void RotatePatrol()
+        private void RotatePatrol(GameTime gameTime)
         {
-            if (this.positionCounter%5 == 0)
+            if (gameTime.TotalGameTime - this.LastRotation > new TimeSpan(0, 0, 2))
             {
                 if (this.patrolLeft)
                 {
                     this.patrolLeft = false;
+                    this.LastRotation = gameTime.TotalGameTime;
                 }
                 else
                 {
                     this.patrolLeft = true;
+                    this.LastRotation = gameTime.TotalGameTime;
                 }
             }
         }
@@ -102,8 +118,8 @@ namespace Diablo.Logic.Characters.Enemies
 
         private bool HeroInRange()
         {
-            float enemyX = this.Enemy.CharacterAnimation.sPosition.X;
-            float enemyY = this.Enemy.CharacterAnimation.sPosition.X;
+            float enemyX = this.Enemy.EnemyAnimation.sPosition.X;
+            float enemyY = this.Enemy.EnemyAnimation.sPosition.X;
 
             float heroX = this.Hero.CharacterAnimation.sPosition.X;
             float heroY = this.Hero.CharacterAnimation.sPosition.Y;

@@ -1,5 +1,6 @@
 ﻿using Diablo.Logic.Characters.Enemies;
 using Diablo.Logic.Characters.Heroes;
+using Microsoft.Xna.Framework;
 
 namespace Diablo.Interfaces
 {
@@ -8,6 +9,6 @@ namespace Diablo.Interfaces
         BaseEnemy Enemy { get; }
         BaseCharacter Hero { get; }
 
-        void Action();
+        void Action(GameTime gameTime);
     }
 }

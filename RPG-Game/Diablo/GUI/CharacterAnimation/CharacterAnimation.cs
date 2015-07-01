@@ -44,7 +44,7 @@ namespace Diablo.GUI.CharacterAnimation
             base.Update(gameTime, keyState);
         }
 
-        protected void PositionAdjustment(Vector2 positionCorrection, AnimationType animType, Direction newDirection)
+        public void PositionAdjustment(Vector2 positionCorrection, AnimationType animType, Direction newDirection)
         {
             this.sDirection += positionCorrection;
             this.PlayAnimation(animType);

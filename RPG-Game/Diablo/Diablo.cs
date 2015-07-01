@@ -23,6 +23,8 @@ namespace Diablo
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private BaseEnemy[] Enemies;
+        private BaseEnemy TestEnemy;
+        private List<AI> AI;
 
         private const int maxEnemies = 10;
         private static Random Rnd = new Random();
@@ -63,6 +65,10 @@ namespace Diablo
 
             this.MainCharacter = new Rogue("rogue");
             //this.player = new SorcererAnimation(new Vector2(-30,-20));
+            this.TestEnemy = EnemyFactory.CreateCharacter();
+            this.AI = new List<AI>();
+            this.AI.Add(new AI(this.MainCharacter as BaseCharacter, this.TestEnemy));
+            this.TestEnemy.EnemyAnimation = new OrcAnimation(new Vector2(300, -20));
             this.Enemies = new BaseEnemy[maxEnemies];
             for (int i = 0; i < this.Enemies.Length; i++)
             {
@@ -71,6 +77,7 @@ namespace Diablo
                 //CharacterType enemyType = (CharacterType)Rnd.Next(3, 6);
                 //initialize enemy
                 this.Enemies[i] = EnemyFactory.CreateCharacter();
+                this.AI.Add(new AI(this.MainCharacter as BaseCharacter, this.Enemies[i]));
                 CharacterType enemyType = (CharacterType)Enum.Parse(typeof(CharacterType), this.Enemies[i].GetType().Name);
                 switch (enemyType)
                 {
@@ -98,6 +105,7 @@ namespace Diablo
                 enemy.EnemyAnimation.LoadContentent(Content);
             }
             (this.MainCharacter as BaseCharacter).ManaAnimation.LoadContentent(Content);
+            this.TestEnemy.EnemyAnimation.LoadContentent(Content);
         }
 
         /// <summary>
@@ -121,6 +129,11 @@ namespace Diablo
 
             // TODO: Add your update logic here
             this.MainCharacter.Update(gameTime);
+            foreach (AI ai in AI)
+            {
+                ai.Action(gameTime);   
+            }
+            //this.AI.Action(gameTime);
             //foreach (AnimatedSprite animation in animations)
             //{
             //    animation.Update(gameTime);
@@ -144,6 +157,7 @@ namespace Diablo
             }
             (this.MainCharacter as BaseCharacter).HealthAnimation.Draw(spriteBatch);
             (this.MainCharacter as BaseCharacter).ManaAnimation.Draw(spriteBatch);
+            this.TestEnemy.EnemyAnimation.Draw(spriteBatch);
             
             this.spriteBatch.End();
             base.Draw(gameTime);
