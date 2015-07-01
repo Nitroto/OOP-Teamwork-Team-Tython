@@ -66,7 +66,7 @@ namespace Diablo.GUI.CharacterAnimation
 
         protected abstract void HandleAnimation(KeyboardState keyState);
 
-        protected void RunAnimation(string command)
+        public void RunAnimation(string command)
         {
             var direction = Regex.Match(this.currentAnimation.ToString(), @"(DownRight|DownLeft|UpRight|UpLeft|Up|Down|Right|Left)");
             string animation = command + direction.Value;

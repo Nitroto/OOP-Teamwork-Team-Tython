@@ -11,7 +11,7 @@ namespace Diablo.Logic.Characters.Enemies
     public class AI : IAI
     {
         private const int CharWidthHeigth = 96;
-        private const int EnemyRange = CharWidthHeigth * 2;
+        private const int EnemyRange = CharWidthHeigth;
         private int positionCounter;
         private bool patrolLeft;
 
@@ -26,13 +26,14 @@ namespace Diablo.Logic.Characters.Enemies
         public BaseEnemy Enemy { get; private set; }
         public BaseCharacter Hero { get; private set; }
         public TimeSpan LastRotation { get; set; }
+        public TimeSpan LastHit { get; set; }
 
         public void Action(GameTime gameTime)
         {
 
             if (HeroInRange())
             {
-                GetCloserToHero();
+                GetCloserToHero(gameTime);
             }
             else
             {
@@ -41,17 +42,11 @@ namespace Diablo.Logic.Characters.Enemies
                 //TODO ADD ANIMATION
                 if (this.patrolLeft)
                 {
-                    this.Enemy.EnemyAnimation.sPosition.Y--;
-                    this.Enemy.EnemyAnimation.AnimationDone();
-                    this.Enemy.EnemyAnimation.PositionAdjustment(new Vector2(0, -1), AnimationType.MoveUp, Direction.Up);
-                    ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
+                    this.Enemy.EnemyAnimation.MoveByY(gameTime, Direction.Up);
                 }
                 else
                 {
-                    this.Enemy.EnemyAnimation.sPosition.Y++;
-                    this.Enemy.EnemyAnimation.AnimationDone();
-                    this.Enemy.EnemyAnimation.PositionAdjustment(new Vector2(0, +1), AnimationType.MoveDown, Direction.Down);
-                    ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
+                    this.Enemy.EnemyAnimation.MoveByY(gameTime, Direction.Down);
                 }
 
                 this.positionCounter++;
@@ -59,26 +54,26 @@ namespace Diablo.Logic.Characters.Enemies
             }
         }
 
-        private void GetCloserToHero()
+        private void GetCloserToHero(GameTime gameTime)
         {
             //TODO ADD ANIMATION
-            if (this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.EnemyAnimation.sPosition.Y)
+            if (this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.EnemyAnimation.sPosition.Y + 40)
             {
-                this.Enemy.EnemyAnimation.sPosition.Y++;
+                this.Enemy.EnemyAnimation.MoveByY(gameTime, Direction.Down);
             }
-            else if (this.Hero.CharacterAnimation.sPosition.Y < this.Enemy.EnemyAnimation.sPosition.Y)
+            else if (this.Hero.CharacterAnimation.sPosition.Y < this.Enemy.EnemyAnimation.sPosition.Y - 40)
             {
-                this.Enemy.EnemyAnimation.sPosition.Y--;
+                this.Enemy.EnemyAnimation.MoveByY(gameTime, Direction.Up);
             }
 
             //TODO ADD ANIMATION
-            if (this.Hero.CharacterAnimation.sPosition.X > this.Enemy.EnemyAnimation.sPosition.X)
+            if (this.Hero.CharacterAnimation.sPosition.X > this.Enemy.EnemyAnimation.sPosition.X + 40)
             {
-                this.Enemy.EnemyAnimation.sPosition.X++;
+                this.Enemy.EnemyAnimation.MoveByX(gameTime, Direction.Down);
             }
-            else if (this.Hero.CharacterAnimation.sPosition.X < this.Enemy.EnemyAnimation.sPosition.X)
+            else if (this.Hero.CharacterAnimation.sPosition.X < this.Enemy.EnemyAnimation.sPosition.X - 40)
             {
-                this.Enemy.EnemyAnimation.sPosition.X--;
+                this.Enemy.EnemyAnimation.MoveByX(gameTime, Direction.Up);
             }
 
             bool inRangeToHit = this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.EnemyAnimation.sPosition.Y - 1
@@ -88,7 +83,7 @@ namespace Diablo.Logic.Characters.Enemies
 
             if (inRangeToHit)
             {
-                HitTheHero();
+                HitTheHero(gameTime);
             }
         }
 
@@ -109,10 +104,16 @@ namespace Diablo.Logic.Characters.Enemies
             }
         }
 
-        private void HitTheHero()
+        private void HitTheHero(GameTime gameTime)
         {
-            this.Enemy.Attack(this.Hero);
-            //TODO ADD ANIMATION
+            if (gameTime.TotalGameTime - this.LastHit > new TimeSpan(0, 0, 1))
+            {
+                this.Enemy.Attack(this.Hero);
+                this.Enemy.EnemyAnimation.RunAnimation("Attack");
+                ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
+                this.LastHit = gameTime.TotalGameTime;
+                //TODO ADD ANIMATION
+            }
         }
 
 

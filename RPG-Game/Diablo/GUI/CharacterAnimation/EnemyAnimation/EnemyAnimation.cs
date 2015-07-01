@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
 {
-    public abstract class EnemyAnimation: CharacterAnimation
+    public abstract class EnemyAnimation : CharacterAnimation
     {
         protected EnemyAnimation(Vector2 position, CharacterType characterType)
             : base(position)
@@ -18,6 +18,38 @@ namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             this.sDirection *= characterSpeed;
             this.sPosition += (this.sDirection * deltaTime);
+        }
+        public void MoveByY(GameTime gameTime, Direction direction)
+        {
+            if (direction == Direction.Up)
+            {
+                this.sPosition.Y--;
+                this.PositionAdjustment(new Vector2(0, -1), AnimationType.MoveUp, direction);
+                ((AnimatedSprite)this).Update(gameTime, new KeyboardState());
+            }
+
+            else
+            {
+                this.sPosition.Y++;
+                this.PositionAdjustment(new Vector2(0, +1), AnimationType.MoveDown, Direction.Down);
+                ((AnimatedSprite)this).Update(gameTime, new KeyboardState());
+            }
+        }
+        public void MoveByX(GameTime gameTime, Direction direction)
+        {
+            if (direction == Direction.Up)
+            {
+                this.sPosition.X--;
+                this.PositionAdjustment(new Vector2(+1, 0), AnimationType.MoveUp, direction);
+                ((AnimatedSprite)this).Update(gameTime, new KeyboardState());
+            }
+
+            else
+            {
+                this.sPosition.X++;
+                this.PositionAdjustment(new Vector2(-1, 0), AnimationType.MoveDown, Direction.Down);
+                ((AnimatedSprite)this).Update(gameTime, new KeyboardState());
+            }
         }
     }
 }
