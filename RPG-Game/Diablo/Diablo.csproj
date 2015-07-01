@@ -133,6 +133,8 @@
     <Content Include="Content\res\menu\menu-characters.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\res\potions\healthpotion.png" />
+    <Content Include="Content\res\potions\manapotion.png" />
     <Content Include="Icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
