@@ -12,14 +12,12 @@ namespace Diablo.Logic.Characters.Enemies
     {
         private const int CharWidthHeigth = 96;
         private const int EnemyRange = CharWidthHeigth;
-        private int positionCounter;
         private bool patrolLeft;
 
         public AI(BaseCharacter hero, BaseEnemy enemy)
         {
             this.Hero = hero;
             this.Enemy = enemy;
-            positionCounter = 0;
             patrolLeft = false;
         }
 
@@ -48,9 +46,6 @@ namespace Diablo.Logic.Characters.Enemies
                 {
                     this.Enemy.EnemyAnimation.MoveByY(gameTime, Direction.Down);
                 }
-
-                this.positionCounter++;
-
             }
             ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
         }
@@ -121,7 +116,7 @@ namespace Diablo.Logic.Characters.Enemies
         private bool HeroInRange()
         {
             float enemyX = this.Enemy.EnemyAnimation.sPosition.X;
-            float enemyY = this.Enemy.EnemyAnimation.sPosition.X;
+            float enemyY = this.Enemy.EnemyAnimation.sPosition.Y;
 
             float heroX = this.Hero.CharacterAnimation.sPosition.X;
             float heroY = this.Hero.CharacterAnimation.sPosition.Y;
