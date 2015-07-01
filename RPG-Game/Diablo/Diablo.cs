@@ -4,7 +4,9 @@ using Diablo.GUI.CharacterAnimation.EnemyAnimation;
 using Diablo.GUI.CharacterAnimation.PlayerAnimation;
 using Diablo.GUI.StatusBarAnimation;
 using Diablo.Interfaces;
+using Diablo.Logic.Characters.Enemies;
 using Diablo.Logic.Characters.Heroes;
+using Diablo.Logic.Factories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -20,6 +22,7 @@ namespace Diablo
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private BaseEnemy[] Enemies;
 
         private const int maxEnemies = 10;
         private static Random Rnd = new Random();
@@ -31,8 +34,7 @@ namespace Diablo
             this.Content.RootDirectory = "Content";
         }
 
-        private PlayerAnimation Player { get;set; }
-        private EnemyAnimation[] Enemies { get; set; }
+        //private EnemyAnimation[] Enemies { get; set; }
         private List<AnimatedSprite> Animations { get; set; }
         private ICharacter MainCharacter { get; set; }
         /// <summary>
@@ -61,19 +63,27 @@ namespace Diablo
 
             this.MainCharacter = new Rogue("rogue");
             //this.player = new SorcererAnimation(new Vector2(-30,-20));
-            this.Enemies = new EnemyAnimation[maxEnemies];
+            this.Enemies = new BaseEnemy[maxEnemies];
             for (int i = 0; i < this.Enemies.Length; i++)
             {
                 int x = Rnd.Next(0, 750);
                 int y = Rnd.Next(0, 350);
-                CharacterType enemyType = (CharacterType)Rnd.Next(3, 6);
+                //CharacterType enemyType = (CharacterType)Rnd.Next(3, 6);
+                //initialize enemy
+                this.Enemies[i] = EnemyFactory.CreateCharacter();
+                CharacterType enemyType = (CharacterType)Enum.Parse(typeof(CharacterType), this.Enemies[i].GetType().Name);
                 switch (enemyType)
                 {
-                    case CharacterType.GreyTroll: this.Enemies[i] = new GreyTrollAnimation(new Vector2(x,y));break;
-                    case CharacterType.Orc: this.Enemies[i] = new OrcAnimation(new Vector2(x, y));break;
-                    case CharacterType.Zombie: this.Enemies[i] = new ZombieAnimation(new Vector2(x, y));break;
+                    case CharacterType.GreyTroll:
+                        this.Enemies[i].EnemyAnimation = new GreyTrollAnimation(new Vector2(x, y)); 
+                        this.Animations.Add(this.Enemies[i].EnemyAnimation); break;
+                    case CharacterType.Orc:
+                        this.Enemies[i].EnemyAnimation = new OrcAnimation(new Vector2(x, y)); 
+                        this.Animations.Add(this.Enemies[i].EnemyAnimation); break;
+                    case CharacterType.Zombie:
+                        this.Enemies[i].EnemyAnimation = new ZombieAnimation(new Vector2(x, y)); 
+                        this.Animations.Add(this.Enemies[i].EnemyAnimation); break;
                 }
-                this.Animations.Add(this.Enemies[i]);
             }
             //this.health = new Health((new Vector2(10, 400)),this.mainCharacter as BaseCharacter);
             //this.mana = new Mana((new Vector2(740, 400)), this.mainCharacter as BaseCharacter);
@@ -83,9 +93,9 @@ namespace Diablo
             //Load Content calls
             (this.MainCharacter as BaseCharacter).HealthAnimation.LoadContentent(Content);
             this.MainCharacter.CharacterAnimation.LoadContentent(Content);
-            foreach(EnemyAnimation enemy in this.Enemies)
+            foreach(BaseEnemy enemy in this.Enemies)
             {
-                enemy.LoadContentent(Content);
+                enemy.EnemyAnimation.LoadContentent(Content);
             }
             (this.MainCharacter as BaseCharacter).ManaAnimation.LoadContentent(Content);
         }

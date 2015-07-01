@@ -4,11 +4,12 @@ using Diablo.Logic.Characters.Enemies;
 
 namespace Diablo.Logic.Factories
 {
-    public class EnemyFactory
+    public static class EnemyFactory
     {
-        public ICharacter CreateCharacter()
+        private static Random rnd = new Random();
+        public static BaseEnemy CreateCharacter()
         {
-            Random rnd = new Random();
+            
             switch (rnd.Next(1,4))
             {
                 case 1: 

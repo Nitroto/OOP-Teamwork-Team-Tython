@@ -5,6 +5,7 @@ using Diablo.Logic.Items;
 using Diablo.GUI.CharacterAnimation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Diablo.GUI.CharacterAnimation.EnemyAnimation;
 
 namespace Diablo.Logic.Characters.Enemies
 {
@@ -19,9 +20,11 @@ namespace Diablo.Logic.Characters.Enemies
             this.Damage = damage;
             this.IsAlive = true;
             this.Items = new List<IItem>();
+            //this.EnemyAnimation = new EnemyAnimation();
         }
 
         public CharacterAnimation CharacterAnimation { get; set; }
+        public EnemyAnimation EnemyAnimation { get; set; }
         public bool IsAlive { get; set; }
         public int Damage { get; set; }
         public int Health { get; set; }
