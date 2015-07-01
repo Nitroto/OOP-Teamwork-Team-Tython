@@ -23,20 +23,17 @@ namespace Diablo
 
         private const int maxEnemies = 10;
         private static Random Rnd = new Random();
-        private PlayerAnimation player;
-        private EnemyAnimation[] enemies;
-        private List<AnimatedSprite> animations;
-        public List<BaseCharacter> heroes;
 
         public Diablo()
         {
-            animations = new List<AnimatedSprite>();
-            heroes = new List<BaseCharacter>();
+            this.Animations = new List<AnimatedSprite>();
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
         }
 
-
+        private PlayerAnimation Player { get;set; }
+        private EnemyAnimation[] Enemies { get; set; }
+        private List<AnimatedSprite> Animations { get; set; }
         private ICharacter MainCharacter { get; set; }
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -64,29 +61,29 @@ namespace Diablo
 
             this.MainCharacter = new Rogue("rogue");
             //this.player = new SorcererAnimation(new Vector2(-30,-20));
-            enemies = new EnemyAnimation[maxEnemies];
-            for (int i = 0; i < this.enemies.Length; i++)
+            this.Enemies = new EnemyAnimation[maxEnemies];
+            for (int i = 0; i < this.Enemies.Length; i++)
             {
                 int x = Rnd.Next(0, 750);
                 int y = Rnd.Next(0, 350);
                 CharacterType enemyType = (CharacterType)Rnd.Next(3, 6);
                 switch (enemyType)
                 {
-                    case CharacterType.GreyTroll: this.enemies[i] = new GreyTrollAnimation(new Vector2(x,y));break;
-                    case CharacterType.Orc: this.enemies[i] = new OrcAnimation(new Vector2(x, y));break;
-                    case CharacterType.Zombie: this.enemies[i] = new ZombieAnimation(new Vector2(x, y));break;
+                    case CharacterType.GreyTroll: this.Enemies[i] = new GreyTrollAnimation(new Vector2(x,y));break;
+                    case CharacterType.Orc: this.Enemies[i] = new OrcAnimation(new Vector2(x, y));break;
+                    case CharacterType.Zombie: this.Enemies[i] = new ZombieAnimation(new Vector2(x, y));break;
                 }
-                this.animations.Add(this.enemies[i]);
+                this.Animations.Add(this.Enemies[i]);
             }
             //this.health = new Health((new Vector2(10, 400)),this.mainCharacter as BaseCharacter);
             //this.mana = new Mana((new Vector2(740, 400)), this.mainCharacter as BaseCharacter);
             //this.animations.Add(this.health);
             //this.animations.Add(this.mana);
-            this.animations.Add(this.MainCharacter.CharacterAnimation);
+            this.Animations.Add(this.MainCharacter.CharacterAnimation);
             //Load Content calls
             (this.MainCharacter as BaseCharacter).HealthAnimation.LoadContentent(Content);
             this.MainCharacter.CharacterAnimation.LoadContentent(Content);
-            foreach(EnemyAnimation enemy in enemies)
+            foreach(EnemyAnimation enemy in this.Enemies)
             {
                 enemy.LoadContentent(Content);
             }
@@ -131,7 +128,7 @@ namespace Diablo
 
             // TODO: Add your drawing code here
             this.spriteBatch.Begin();
-            foreach (AnimatedSprite animation in animations)
+            foreach (AnimatedSprite animation in this.Animations)
             {
                 animation.Draw(spriteBatch);
             }

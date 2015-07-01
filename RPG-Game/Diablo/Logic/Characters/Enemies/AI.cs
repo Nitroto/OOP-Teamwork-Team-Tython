@@ -1,32 +1,27 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Diablo.Interfaces;
+﻿using Diablo.Interfaces;
 using Diablo.Logic.Characters.Heroes;
-using Microsoft.Xna.Framework.Input;
 
 namespace Diablo.Logic.Characters.Enemies
 {
-    public class AI
+    public class AI : IAI
     {
         private const int CharWidthHeigth = 96;
         private const int EnemyRange = CharWidthHeigth*2;
         private int positionCounter;
-        private bool patrolLeft = false;
+        private bool patrolLeft;
 
         public AI(BaseCharacter hero,BaseEnemy enemy)
         {
             this.Hero = hero;
             this.Enemy = enemy;
             positionCounter = 0;
+            patrolLeft = false;
         }
 
         public BaseEnemy Enemy { get;private set; }
         public BaseCharacter Hero { get; private set; }
 
-        public void GetNewPosition()
+        public void Action()
         {
             if (HeroInRange())
             {
@@ -36,6 +31,7 @@ namespace Diablo.Logic.Characters.Enemies
             {
                 RotatePatrol();
 
+                //TODO ADD ANIMATION
                 if (this.patrolLeft)
                 {
                     this.Enemy.CharacterAnimation.sPosition.Y--;
@@ -51,6 +47,7 @@ namespace Diablo.Logic.Characters.Enemies
 
         private void GetCloserToHero()
         {
+            //TODO ADD ANIMATION
             if (this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.CharacterAnimation.sPosition.Y)
             {
                 this.Enemy.CharacterAnimation.sPosition.Y++;
@@ -60,7 +57,7 @@ namespace Diablo.Logic.Characters.Enemies
                 this.Enemy.CharacterAnimation.sPosition.Y--;
             }
 
-
+            //TODO ADD ANIMATION
             if (this.Hero.CharacterAnimation.sPosition.X > this.Enemy.CharacterAnimation.sPosition.X)
             {
                 this.Enemy.CharacterAnimation.sPosition.X++;
@@ -77,7 +74,7 @@ namespace Diablo.Logic.Characters.Enemies
 
             if (inRangeToHit)
             {
-                HittingTheHero();
+                HitTheHero();
             }
         }
 
@@ -96,7 +93,7 @@ namespace Diablo.Logic.Characters.Enemies
             }
         }
 
-        private void HittingTheHero()
+        private void HitTheHero()
         {
             this.Enemy.Attack(this.Hero);
             //TODO ADD ANIMATION

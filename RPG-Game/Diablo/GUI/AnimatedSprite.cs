@@ -63,6 +63,7 @@ namespace Diablo.GUI
                 }
             }
         }
+
         public void PlayAnimation(AnimationType animation)
         {
             if (this.currentAnimation != animation && currentDirection == Direction.None)
@@ -71,10 +72,12 @@ namespace Diablo.GUI
                 this.frameIndex = 0;
             }
         }
-        public abstract void AnimationDone();
+
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.sTexture, this.sPosition, this.sAnimations[currentAnimation][frameIndex], Color.White);
         }
+
+        public abstract void AnimationDone();
     }
 }

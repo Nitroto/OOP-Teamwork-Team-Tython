@@ -6,10 +6,10 @@ namespace Diablo.GUI.StatusBarAnimation
 {
     public class Inventory : StatusBar
     {
-        private const string imgSource = @"res/bars/inventory.png";
+        private const string ImgSource = @"res/bars/inventory.png";
 
         public Inventory(Vector2 position, BaseCharacter character)
-            :base(position, imgSource)
+            :base(position, ImgSource)
         {
 
         }

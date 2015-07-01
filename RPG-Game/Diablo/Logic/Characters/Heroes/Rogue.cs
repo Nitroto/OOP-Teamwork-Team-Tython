@@ -9,13 +9,12 @@ namespace Diablo.Logic.Characters.Heroes
     {
         private const int DefaultHealth = 180;
         private const int DefaultDamage = 20;
-        private const int InitialHealth = 180;
-        private const int InitialMana = 90;
+        private const int DefInitialHealth = 180;
+        private const int DefInitialMana = 90;
         private const int ManaCastCost = 10;
-        private Random rnd = new Random();
 
         public Rogue(string name) :
-            base(name, DefaultHealth, DefaultDamage, InitialMana)
+            base(name, DefaultHealth, DefaultDamage, DefInitialMana)
         {
             this.CharacterAnimation = new RogueAnimation(new Vector2(-30, -20));
         }

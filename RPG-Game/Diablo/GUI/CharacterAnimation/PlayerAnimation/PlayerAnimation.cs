@@ -6,11 +6,12 @@ namespace Diablo.GUI.CharacterAnimation.PlayerAnimation
 {
     public abstract class PlayerAnimation : CharacterAnimation
     {
-        private bool castSpell = false;
+        private bool castSpell;
 
         protected PlayerAnimation(Vector2 position, CharacterType characterType)
             : base(position)
         {
+            this.castSpell = false;
             this.CharacterType = characterType;
             this.ImgSource = @"res/characters/player/" + this.CharacterType.ToString().ToLower() + ".png";
         }

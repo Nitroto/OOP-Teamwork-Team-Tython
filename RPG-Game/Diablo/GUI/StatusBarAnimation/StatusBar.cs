@@ -9,7 +9,9 @@ namespace Diablo.GUI.StatusBarAnimation
     {
         protected Rectangle[] sRectangles;
         protected int counter = 1;
-        public StatusBar(Vector2 position, string imgSource)
+
+
+        protected StatusBar(Vector2 position, string imgSource)
             : base(position)
         {
             this.sRectangles = new Rectangle[50];
@@ -17,14 +19,19 @@ namespace Diablo.GUI.StatusBarAnimation
             this.FrameToShow = new Rectangle(0, 0, 50, 50);
             this.ImgSource = imgSource;
         }
+
+
         public int MaxQuantity { get; set; }
         public string ImgSource { get; set; }
         public Rectangle FrameToShow { get; set; }
         public Rectangle Size { get; set; }
+
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.sTexture, this.sPosition, this.FrameToShow, Color.White);
         }
+
         public void AddFrames(int frames, int xPos, int xStartFrama, int width, int height, Vector2 offset)
         {
             for (int i = 0; i < frames; i++)
@@ -33,10 +40,12 @@ namespace Diablo.GUI.StatusBarAnimation
             }
 
         }
+
         public void LoadContentent(ContentManager contentManager)
         {
             this.sTexture = contentManager.Load<Texture2D>(this.ImgSource);
         }
+
         //public override void Update(GameTime gameTime)
         //{
 

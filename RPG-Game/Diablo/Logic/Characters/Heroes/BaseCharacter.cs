@@ -40,6 +40,9 @@ namespace Diablo.Logic.Characters.Heroes
         public Mana ManaAnimation { get; set; }
         public TimeSpan LastCast { get; set; }
         public TimeSpan LastHitTaken { get; set; }
+        public int InitialHealth { get; set; }
+        public int InitialMana { get; set; }
+
         public void Update(GameTime gameTime)
         {
             KeyboardState keyState = Keyboard.GetState();
@@ -66,6 +69,7 @@ namespace Diablo.Logic.Characters.Heroes
                 this.LastHitTaken = gameTime.TotalGameTime;
             }
         }
+
         public int Health { get { return this.health; }
             set 
             {
@@ -74,6 +78,7 @@ namespace Diablo.Logic.Characters.Heroes
                     this.HealthChange(this,
                         new HealthChangedEventArgs(value, this.InitialHealth));
                 }
+
                 if (value < 0)
                 {
                     this.health = 0;
@@ -85,8 +90,7 @@ namespace Diablo.Logic.Characters.Heroes
                 
             }
         }
-        public int InitialHealth { get; set; }
-        public int InitialMana { get; set; }
+
         public List<IItem> Items
         {
             get

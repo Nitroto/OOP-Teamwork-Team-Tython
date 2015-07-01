@@ -7,10 +7,10 @@ namespace Diablo.GUI.StatusBarAnimation
 {
     public class Health : StatusBar
     {
-        private const string imgSource = @"res/bars/health.png";
+        private const string ImgSource = @"res/bars/health.png";
 
         public Health(Vector2 position)
-            : base(position, imgSource)
+            : base(position, ImgSource)
         {
         }
 

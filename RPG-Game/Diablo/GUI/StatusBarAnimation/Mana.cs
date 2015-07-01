@@ -7,10 +7,10 @@ namespace Diablo.GUI.StatusBarAnimation
 {
     public class Mana : StatusBar
     {
-        private const string imgSource = @"res/bars/mana.png";
+        private const string ImgSource = @"res/bars/mana.png";
 
         public Mana(Vector2 position)
-            : base(position, imgSource)
+            : base(position, ImgSource)
         {
         }
 

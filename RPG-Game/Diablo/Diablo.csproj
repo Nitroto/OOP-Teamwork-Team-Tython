@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAI.cs" />
     <Compile Include="Interfaces\ISizeable.cs" />
     <Compile Include="Logic\Characters\Enemies\AI.cs" />
     <Compile Include="Logic\Characters\Enemies\BaseEnemy.cs" />
