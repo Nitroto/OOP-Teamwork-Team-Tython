@@ -26,6 +26,7 @@ namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
                 this.sPosition.Y--;
                 this.PositionAdjustment(new Vector2(0, -1), AnimationType.MoveUp, direction);
                 ((AnimatedSprite)this).Update(gameTime, new KeyboardState());
+                this.currentDirection = Direction.None;
             }
 
             else
@@ -33,6 +34,7 @@ namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
                 this.sPosition.Y++;
                 this.PositionAdjustment(new Vector2(0, +1), AnimationType.MoveDown, Direction.Down);
                 ((AnimatedSprite)this).Update(gameTime, new KeyboardState());
+                this.currentDirection = Direction.None;
             }
         }
         public void MoveByX(GameTime gameTime, Direction direction)
@@ -42,6 +44,7 @@ namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
                 this.sPosition.X--;
                 this.PositionAdjustment(new Vector2(+1, 0), AnimationType.MoveUp, direction);
                 ((AnimatedSprite)this).Update(gameTime, new KeyboardState());
+                this.currentDirection = Direction.None;
             }
 
             else
@@ -49,7 +52,12 @@ namespace Diablo.GUI.CharacterAnimation.EnemyAnimation
                 this.sPosition.X++;
                 this.PositionAdjustment(new Vector2(-1, 0), AnimationType.MoveDown, Direction.Down);
                 ((AnimatedSprite)this).Update(gameTime, new KeyboardState());
+                this.currentDirection = Direction.None;
             }
+        }
+        public void PlayAttackAnimation(GameTime gameTime)
+        {
+            this.RunAnimation("Attack");
         }
     }
 }

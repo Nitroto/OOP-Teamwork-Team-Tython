@@ -52,6 +52,7 @@ namespace Diablo.Logic.Characters.Enemies
                 this.positionCounter++;
 
             }
+            ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
         }
 
         private void GetCloserToHero(GameTime gameTime)
@@ -109,9 +110,9 @@ namespace Diablo.Logic.Characters.Enemies
             if (gameTime.TotalGameTime - this.LastHit > new TimeSpan(0, 0, 1))
             {
                 this.Enemy.Attack(this.Hero);
-                this.Enemy.EnemyAnimation.RunAnimation("Attack");
-                ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
+                this.Enemy.EnemyAnimation.PlayAttackAnimation(gameTime);
                 this.LastHit = gameTime.TotalGameTime;
+                //this.Hero.CharacterAnimation.Update(gameTime, keyState.IsKeyDown(Keys.Up));
                 //TODO ADD ANIMATION
             }
         }
