@@ -38,6 +38,20 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GUI\FadeEffect.cs" />
+    <Compile Include="GUI\GamePlayScreen.cs" />
+    <Compile Include="GUI\InputManager.cs" />
+    <Compile Include="GUI\SplashScreen.cs" />
+    <Compile Include="GUI\TitleScreen.cs" />
+    <Compile Include="GUI\XmlManager.cs" />
+    <Compile Include="GUI\GameScreen.cs" />
+    <Compile Include="GUI\Image.cs" />
+    <Compile Include="GUI\ImageEffect.cs" />
+    <Compile Include="GUI\Menu.cs" />
+    <Compile Include="GUI\MenuItem.cs" />
+    <Compile Include="GUI\MenuManager.cs" />
+    <Compile Include="GUI\PlayEffect.cs" />
+    <Compile Include="GUI\ScreenManager.cs" />
     <Compile Include="Interfaces\IAI.cs" />
     <Compile Include="Interfaces\ISizeable.cs" />
     <Compile Include="Logic\Characters\Enemies\AI.cs" />
@@ -59,24 +73,24 @@
     <Compile Include="Logic\Factories\HeroesFactory.cs" />
     <Compile Include="Logic\Factories\ItemFactory.cs" />
     <Compile Include="Logic\GameObject.cs" />
-    <Compile Include="GUI\AnimatedSprite.cs" />
+    <Compile Include="GUI\GamePlayScreen\AnimatedSprite.cs" />
     <Compile Include="Diablo.cs" />
     <Compile Include="Enums\AnimationsType.cs" />
     <Compile Include="Enums\CharacterType.cs" />
     <Compile Include="Enums\Direction.cs" />
-    <Compile Include="GUI\CharacterAnimation\EnemyAnimation\EnemyAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\EnemyAnimation\GreyTrollAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\EnemyAnimation\OrcAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\EnemyAnimation\ZombieAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\PlayerAnimation\PlayerAnimation.cs" />
-    <Compile Include="GUI\StatusBarAnimation\Health.cs" />
-    <Compile Include="GUI\StatusBarAnimation\Inventory.cs" />
-    <Compile Include="GUI\StatusBarAnimation\Mana.cs" />
-    <Compile Include="GUI\StatusBarAnimation\StatusBar.cs" />
-    <Compile Include="GUI\CharacterAnimation\CharacterAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\PlayerAnimation\RogueAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\PlayerAnimation\SorcererAnimation.cs" />
-    <Compile Include="GUI\CharacterAnimation\PlayerAnimation\BarbarianAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\EnemyAnimation\EnemyAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\EnemyAnimation\GreyTrollAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\EnemyAnimation\OrcAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\EnemyAnimation\ZombieAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\PlayerAnimation\PlayerAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\StatusBarAnimation\Health.cs" />
+    <Compile Include="GUI\GamePlayScreen\StatusBarAnimation\Inventory.cs" />
+    <Compile Include="GUI\GamePlayScreen\StatusBarAnimation\Mana.cs" />
+    <Compile Include="GUI\GamePlayScreen\StatusBarAnimation\StatusBar.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\CharacterAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\PlayerAnimation\RogueAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\PlayerAnimation\SorcererAnimation.cs" />
+    <Compile Include="GUI\GamePlayScreen\CharacterAnimation\PlayerAnimation\BarbarianAnimation.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\IHeal.cs" />
@@ -107,6 +121,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\load\GamePlayScreen.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\load\HeroMenu.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\load\ScreenManager.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\load\SplashScreen.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\load\TitleMenu.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\load\TitleScreen.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\res\bars\health.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -131,11 +163,44 @@
     <Content Include="Content\res\characters\enemy\zombie.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\menu\menu-characters.png">
+    <Content Include="Content\res\menu\heroMenu\barbarian.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\menu\heroMenu\rogue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\menu\heroMenu\sorcerer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\menu\mainMenu\credits.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\menu\mainMenu\loadgame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\menu\mainMenu\newgame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\menu\mainMenu\options.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\menu\menubackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\potions\healthpotion.png" />
     <Content Include="Content\res\potions\manapotion.png" />
+    <Content Include="Content\res\screenManager\FadeImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\splashScreen\Image0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\splashScreen\Image1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\splashScreen\Image2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -144,7 +209,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GUI\ItemAnimation\" />
+    <Folder Include="GUI\GamePlayScreen\ItemAnimation\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

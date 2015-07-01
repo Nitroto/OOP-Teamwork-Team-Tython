@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TitleScreen>
+  <Background>
+    <Path>res/menu/menubackground.png</Path>
+  </Background>
+  <Path>Content/load/TitleMenu.xml</Path>
+</TitleScreen>

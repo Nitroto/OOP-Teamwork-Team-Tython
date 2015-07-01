@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Diablo.Logic.Characters.Enemies.BaseEnemy" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACACAAAAACAAAAAAAFAAAAIAAAAAAAAACAAAABAA=</HashCode>
+      <FileName>Logic\Characters\Enemies\BaseEnemy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Diablo.Logic.Characters.Enemies.GreyTroll" Collapsed="true">
+    <Position X="1.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Characters\Enemies\GreyTroll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Characters.Enemies.Orc" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Characters\Enemies\Orc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Characters.Enemies.Zombie" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Characters\Enemies\Zombie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Characters.Heroes.Barbarian" Collapsed="true">
+    <Position X="19.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Logic\Characters\Heroes\Barbarian.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Diablo.Logic.Characters.Heroes.BaseCharacter" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACACAAAAACAAAAAgAEAAAAIAAAAAAAAACIAAAAAA=</HashCode>
+      <FileName>Logic\Characters\Heroes\BaseCharacter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Diablo.Logic.Characters.Heroes.Rogue" Collapsed="true">
+    <Position X="21.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Logic\Characters\Heroes\Rogue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Diablo.Logic.Characters.Heroes.Sorcerer" Collapsed="true">
+    <Position X="17.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Logic\Characters\Heroes\Sorcerer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Diablo" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEEEAAAAAAAwAAAAAAAAAAAgAAAAgBAAAAAAAAAC4=</HashCode>
+      <FileName>Diablo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Program" Collapsed="true">
+    <Position X="30.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Exceptions.InvalidOrNullNameException" Collapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidOrNullNameException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Factories.EnemyFactory" Collapsed="true">
+    <Position X="28.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Factories\EnemyFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Factories.HeroesFactory" Collapsed="true">
+    <Position X="30.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Factories\HeroesFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Factories.ItemFactory" Collapsed="true">
+    <Position X="28.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Factories\ItemFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.AnimatedSprite" Collapsed="true">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAgAAAAABQAgAAAAgAEgBAACBgQAAAACACIAAAAAA=</HashCode>
+      <FileName>GUI\AnimatedSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.CharacterAnimation" Collapsed="true">
+    <Position X="7" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQQAAABAEAAAAADAgAAAAIQAAAAAAAAAiAAAAEAAAE=</HashCode>
+      <FileName>GUI\CharacterAnimation\CharacterAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.EnemyAnimation.EnemyAnimation" Collapsed="true">
+    <Position X="3.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\CharacterAnimation\EnemyAnimation\EnemyAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.EnemyAnimation.GreyTrollAnimation" Collapsed="true">
+    <Position X="1.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>GUI\CharacterAnimation\EnemyAnimation\GreyTrollAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.EnemyAnimation.OrcAnimation" Collapsed="true">
+    <Position X="3.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>GUI\CharacterAnimation\EnemyAnimation\OrcAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.EnemyAnimation.ZombieAnimation" Collapsed="true">
+    <Position X="5.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>GUI\CharacterAnimation\EnemyAnimation\ZombieAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.PlayerAnimation.BarbarianAnimation" Collapsed="true">
+    <Position X="12.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>GUI\CharacterAnimation\PlayerAnimation\BarbarianAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.PlayerAnimation.PlayerAnimation" Collapsed="true">
+    <Position X="10.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAQAAQAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>GUI\CharacterAnimation\PlayerAnimation\PlayerAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.PlayerAnimation.RogueAnimation" Collapsed="true">
+    <Position X="8" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>GUI\CharacterAnimation\PlayerAnimation\RogueAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.CharacterAnimation.PlayerAnimation.SorcererAnimation" Collapsed="true">
+    <Position X="10.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>GUI\CharacterAnimation\PlayerAnimation\SorcererAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.StatusBarAnimation.Health" Collapsed="true">
+    <Position X="14.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAACAAgAAAAAA=</HashCode>
+      <FileName>GUI\StatusBarAnimation\Health.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.StatusBarAnimation.Inventory" Collapsed="true">
+    <Position X="17" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>GUI\StatusBarAnimation\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.StatusBarAnimation.Mana" Collapsed="true">
+    <Position X="19.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAACAAgAAAAAA=</HashCode>
+      <FileName>GUI\StatusBarAnimation\Mana.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.GUI.StatusBarAnimation.StatusBar" Collapsed="true">
+    <Position X="17" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAACAAggAAAgAAABAAAAAAAAEAAAACAAAAAAA=</HashCode>
+      <FileName>GUI\StatusBarAnimation\StatusBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Items.Item" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAECACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Logic\Items\Item.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Diablo.Logic.Items.ShortSword" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Logic\Items\ShortSword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Items.Potion.Potion" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Items\Potion\Potion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Diablo.Logic.Items.Staff" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Logic\Items\Staff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Diablo.Position" Collapsed="true">
+    <Position X="27" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Logic\Position.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="Diablo.Interfaces.IAttack" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IAttack.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Diablo.Interfaces.ICharacter" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAACAAAAAAAEAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICharacter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Diablo.Interfaces.IHeal" Collapsed="true">
+    <Position X="27" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IHeal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Diablo.Interfaces.IItem" Collapsed="true">
+    <Position X="28.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Interfaces\IItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Diablo.Interfaces.IKillable" Collapsed="true">
+    <Position X="24.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IKillable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Diablo.Interfaces.IManaregenable" Collapsed="true">
+    <Position X="30.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IManaregenable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Diablo.Interfaces.IShield" Collapsed="true">
+    <Position X="27" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IShield.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Diablo.Enums.AnimationType" Collapsed="true">
+    <Position X="27" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ERHAgMEAkAwAAKECZAABEAIGIgBIACkMQwEgIIAICAA=</HashCode>
+      <FileName>Enums\AnimationsType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Diablo.Enums.CharacterType" Collapsed="true">
+    <Position X="28.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAMAEAAAAAAAACAAAAAAAAACAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\CharacterType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Diablo.Enums.Direction" Collapsed="true">
+    <Position X="30.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQAgIAAAAAAAAAAAAAAAAAAAAAAAAACACAIAEAAAI=</HashCode>
+      <FileName>Enums\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Diablo.Enums.ItemSize" Collapsed="true">
+    <Position X="27" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAABgAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Enums\ItemSize.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
