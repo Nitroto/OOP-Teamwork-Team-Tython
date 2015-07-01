@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Diablo.GUI.GamePLayScreen.CharacterAnimation;
+using Diablo.GUI.GamePLayScreen.StatusBarAnimation;
 using Diablo.Interfaces;
 using Diablo.Logic.Items;
-using Diablo.GUI.CharacterAnimation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Diablo.GUI.StatusBarAnimation;
 using System;
+using System.Collections.Generic;
 
 namespace Diablo.Logic.Characters.Heroes
 {

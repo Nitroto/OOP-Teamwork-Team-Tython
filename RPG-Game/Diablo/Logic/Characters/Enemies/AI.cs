@@ -1,5 +1,5 @@
 ﻿using Diablo.Enums;
-using Diablo.GUI;
+using Diablo.GUI.GamePLayScreen;
 using Diablo.Interfaces;
 using Diablo.Logic.Characters.Heroes;
 using Microsoft.Xna.Framework;

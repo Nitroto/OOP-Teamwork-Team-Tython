@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <Axis>X</Axis>
+  <Effects>FadeEffect</Effects>
+  <FadeEffect>
+    <FadeSpeed>0.5</FadeSpeed>
+  </FadeEffect>
+  <Item>
+    <LinkType>Screen</LinkType>
+    <LinkID>GamePlayScreen</LinkID>
+    <Image>
+      <Path>res/menu/heroMenu/barbarian.png</Path>
+      <Scale>
+        <X>1.2</X>
+        <Y>1.2</Y>
+      </Scale>
+    </Image>
+  </Item>
+
+  <Item>
+    <LinkType>Screen</LinkType>
+    <LinkID>GamePlayScreen</LinkID>
+    <Image>
+      <Path>res/menu/heroMenu/rogue.png</Path>
+      <Scale>
+        <X>1.2</X>
+        <Y>1.2</Y>
+      </Scale>
+    </Image>
+  </Item>
+
+  <Item>
+    <LinkType>Screen</LinkType>
+    <LinkID>GamePlayScreen</LinkID>
+    <Image>
+      <Path>res/menu/heroMenu/sorcerer.png</Path>
+      <Scale>
+        <X>1.2</X>
+        <Y>1.2</Y>
+      </Scale>
+    </Image>
+  </Item>
+</Menu>

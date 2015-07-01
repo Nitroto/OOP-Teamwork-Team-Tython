@@ -1,4 +1,4 @@
-﻿using Diablo.GUI.CharacterAnimation;
+﻿using Diablo.GUI.GamePLayScreen.CharacterAnimation;
 using Diablo.Logic.Items;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;

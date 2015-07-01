@@ -1,7 +1,6 @@
-﻿using Diablo.GUI.CharacterAnimation.PlayerAnimation;
+﻿using Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation;
 using Diablo.Interfaces;
 using Microsoft.Xna.Framework;
-using System;
 
 namespace Diablo.Logic.Characters.Heroes
 {
