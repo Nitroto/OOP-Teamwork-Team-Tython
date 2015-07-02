@@ -36,9 +36,10 @@ namespace Diablo
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.Dimensions.X;
-            graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
-            graphics.ApplyChanges();
+            this.graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.Dimensions.X;
+            this.graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
+            this.graphics.ApplyChanges();
+            this.Window.Title = "Softiablo I";
             base.Initialize();
         }
 
