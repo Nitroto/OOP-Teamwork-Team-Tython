@@ -41,7 +41,7 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.EnemyAnimation
             if (direction == Direction.Up)
             {
                 this.sPosition.X--;
-                this.PositionAdjustment(new Vector2(+1, 0), AnimationType.MoveUp, direction);
+                this.PositionAdjustment(new Vector2(+1, 0), AnimationType.MoveLeft, direction);
                 ((AnimatedSprite)this).Update(gameTime);
                 this.currentDirection = Direction.None;
             }
@@ -49,7 +49,7 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.EnemyAnimation
             else
             {
                 this.sPosition.X++;
-                this.PositionAdjustment(new Vector2(-1, 0), AnimationType.MoveDown, Direction.Down);
+                this.PositionAdjustment(new Vector2(-1, 0), AnimationType.MoveRight, Direction.Down);
                 ((AnimatedSprite)this).Update(gameTime);
                 this.currentDirection = Direction.None;
             }
