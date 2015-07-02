@@ -14,6 +14,16 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
             this.Frames = this.frames;
             this.InitializeAnimation();
         }
-
+        //public override void Update(GameTime gameTime)
+        //{
+        //    if (!dies)
+        //    {
+        //        base.Update(gameTime);
+        //    }
+        //    else
+        //    {
+        //        this.frameIndex = this.frames[this.frames.Length - 1];
+        //    }
+        //}
     }
 }

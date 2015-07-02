@@ -11,7 +11,7 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation
     {
         protected float characterSpeed = 100f;
         protected bool attacking = false;
-        protected bool isHitted = false;
+        public bool isHitted = false;
         protected bool dies = false;
         protected bool isAlive = true;
 
@@ -35,7 +35,6 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation
         public override void Update(GameTime gameTime)
         {
             this.sDirection = Vector2.Zero;
-            
             this.HandleAnimation();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             this.sDirection *= characterSpeed;

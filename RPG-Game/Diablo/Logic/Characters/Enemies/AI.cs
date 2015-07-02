@@ -11,7 +11,7 @@ namespace Diablo.Logic.Characters.Enemies
     public class AI : IAI
     {
         private const int CharWidthHeigth = 96;
-        private const int EnemyRange = CharWidthHeigth;
+        private const int EnemyRange = 40;
         private bool patrolLeft;
 
         public AI(BaseCharacter hero, BaseEnemy enemy)
@@ -107,7 +107,7 @@ namespace Diablo.Logic.Characters.Enemies
                 this.Enemy.Attack(this.Hero);
                 this.Enemy.EnemyAnimation.PlayAttackAnimation(gameTime);
                 this.LastHit = gameTime.TotalGameTime;
-                //this.Hero.CharacterAnimation.Update(gameTime, keyState.IsKeyDown(Keys.Up));
+                this.Hero.CharacterAnimation.isHitted = true;
                 //TODO ADD ANIMATION
             }
         }

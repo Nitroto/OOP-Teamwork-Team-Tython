@@ -6,7 +6,7 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.EnemyAnimation
     public class ZombieAnimation : EnemyAnimation
     {
         // frames for correct animate character {Move, Attack, Hitted, Idle, Cast Spell, Dies}
-        private readonly int[] frames = new int[] { 8, 13, 9, 1, 0, 9 };
+        private readonly int[] frames = new int[] { 8, 11, 9, 1, 0, 9 };
 
         public ZombieAnimation(Vector2 position)
             : base(position, CharacterType.Zombie)

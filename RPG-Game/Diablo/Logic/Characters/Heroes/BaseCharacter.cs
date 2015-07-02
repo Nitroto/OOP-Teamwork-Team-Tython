@@ -1,11 +1,13 @@
 ﻿using Diablo.GUI.GamePLayScreen.CharacterAnimation;
 using Diablo.GUI.GamePLayScreen.StatusBarAnimation;
 using Diablo.Interfaces;
+using Diablo.Logic.Characters.Enemies;
 using Diablo.Logic.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Diablo.Logic.Characters.Heroes
 {
@@ -17,6 +19,7 @@ namespace Diablo.Logic.Characters.Heroes
         private int health;
         private int mana;
         private List<IItem> items;
+        private List<BaseEnemy> enemiesToFight;
 
         protected BaseCharacter(string name, int health, int damage, int mana)
             : base(name)
@@ -32,9 +35,17 @@ namespace Diablo.Logic.Characters.Heroes
             this.ManaAnimation = new Mana((new Vector2(740, 400)));
             this.HealthChange += BaseCharacter_HealthChange;
             this.ManaChange += BaseCharacter_ManaChange;
+
         }
 
-
+        public List<BaseEnemy> EnemiesToFight
+        {
+            get { return this.enemiesToFight; }
+            set
+            {
+                this.enemiesToFight = new List<BaseEnemy>(value);
+            }
+        }
         public CharacterAnimation CharacterAnimation { get; set; }
         public Health HealthAnimation { get; set; }
         public Mana ManaAnimation { get; set; }
@@ -48,16 +59,52 @@ namespace Diablo.Logic.Characters.Heroes
             KeyboardState keyState = Keyboard.GetState();
             this.HandleUserInput(keyState, gameTime);
             this.CharacterAnimation.Update(gameTime);
-            
-            
+
+
             //regen mana
             this.ManaRegen(gameTime);
         }
 
         protected virtual void HandleUserInput(KeyboardState keyState, GameTime gameTime)
         {
-            
-            if (keyState.IsKeyDown(Keys.Up) && gameTime.TotalGameTime - this.LastCast > new TimeSpan(0,0,2))
+
+            if (keyState.IsKeyDown(Keys.Space))
+            {
+                //var enemyToHit = this.EnemiesToFight.Where(enemy => (this.CharacterAnimation.sPosition.Y > enemy.EnemyAnimation.sPosition.Y - 1
+                //                || this.CharacterAnimation.sPosition.Y > enemy.EnemyAnimation.sPosition.Y + 1
+                //                && this.CharacterAnimation.sPosition.X < enemy.EnemyAnimation.sPosition.X - 1
+                //                || this.CharacterAnimation.sPosition.X < enemy.EnemyAnimation.sPosition.X + 1) == true);
+                //foreach (var enemy in enemyToHit)
+                //{
+                //    this.Attack(enemy);
+
+                //}
+                //int number
+                for (int i = 0; i < this.EnemiesToFight.Count; i++)
+                {
+                    BaseEnemy enemy = this.EnemiesToFight[i];
+                    bool isInRange = this.CharacterAnimation.sPosition.Y > enemy.EnemyAnimation.sPosition.Y - 1
+            || this.CharacterAnimation.sPosition.Y > enemy.EnemyAnimation.sPosition.Y + 1
+            && this.CharacterAnimation.sPosition.X < enemy.EnemyAnimation.sPosition.X - 1
+            || this.CharacterAnimation.sPosition.X < enemy.EnemyAnimation.sPosition.X + 1;
+                    if (isInRange)
+                    {
+                        this.Attack(enemy);
+                        if (!enemy.IsAlive)
+                        {
+                            this.EnemiesToFight.Remove(enemy);
+                        }
+                    }
+                }
+                //foreach (var enemy in enemyToHit)
+                //{
+                //    if (!enemy.IsAlive)
+                //    {
+                //        this.EnemiesToFight.Remove(enemy);
+                //    }
+                //}
+            }
+            if (keyState.IsKeyDown(Keys.Up) && gameTime.TotalGameTime - this.LastCast > new TimeSpan(0, 0, 2))
             {
                 this.CastSpell();
                 this.LastCast = gameTime.TotalGameTime;
@@ -70,8 +117,17 @@ namespace Diablo.Logic.Characters.Heroes
             }
         }
 
-        public int Health { get { return this.health; }
-            set 
+        /*
+         * bool inRangeToHit = this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.EnemyAnimation.sPosition.Y - 1
+                                || this.Hero.CharacterAnimation.sPosition.Y > this.Enemy.EnemyAnimation.sPosition.Y + 1
+                                && this.Hero.CharacterAnimation.sPosition.X < this.Enemy.EnemyAnimation.sPosition.X - 1
+                                || this.Hero.CharacterAnimation.sPosition.X < this.Enemy.EnemyAnimation.sPosition.X + 1;
+         */
+
+        public int Health
+        {
+            get { return this.health; }
+            set
             {
                 if (this.HealthChange != null)
                 {
@@ -87,7 +143,7 @@ namespace Diablo.Logic.Characters.Heroes
                 {
                     this.health = value;
                 }
-                
+
             }
         }
 

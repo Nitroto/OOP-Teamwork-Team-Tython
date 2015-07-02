@@ -46,9 +46,10 @@ namespace Diablo.GUI
             else if (this.currentElement == this.Images.Count - 1 && this.Images[this.currentElement].Alpha == 1.0f)
             {
                 this.Images[this.currentElement].FadeEffect.IsActive = false;
-                if (this.currentTime >= this.AnimationTime)
+                if (this.currentTime > this.AnimationTime)
                 {
                     ScreenManager.Instance.ChangeScreens("TitleScreen");
+                    //this.Images[this.currentElement].UnloadContent();
                 }
             }
             if (InputManager.Instance.KeyPressed(Keys.Enter, Keys.Space))

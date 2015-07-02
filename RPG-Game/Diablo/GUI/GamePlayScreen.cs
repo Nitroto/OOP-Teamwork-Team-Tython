@@ -14,11 +14,11 @@ namespace Diablo.GUI
 {
     public class GamePlayScreen : GameScreen
     {
-        private BaseEnemy[] Enemies;
+        private List<BaseEnemy> Enemies;
         private BaseEnemy TestEnemy;
         private List<AI> AI;
 
-        private const int maxEnemies = 10;
+        private const int maxEnemies = 4;
         private static Random Rnd = new Random();
 
         public GamePlayScreen()
@@ -48,15 +48,16 @@ namespace Diablo.GUI
             this.AI = new List<AI>();
             this.AI.Add(new AI(this.MainCharacter as BaseCharacter, this.TestEnemy));
             this.TestEnemy.EnemyAnimation = new OrcAnimation(new Vector2(300, -20));
-            this.Enemies = new BaseEnemy[maxEnemies];
-            for (int i = 0; i < this.Enemies.Length; i++)
+            
+            this.Enemies = new List<BaseEnemy>();
+            for (int i = 0; i < maxEnemies; i++)
             {
                 int x = Rnd.Next(0, 750);
                 int y = Rnd.Next(0, 350);
                 //CharacterType enemyType = (CharacterType)Rnd.Next(3, 6);
 
                 //initialize enemy
-                this.Enemies[i] = EnemyFactory.CreateCharacter();
+                this.Enemies.Add(EnemyFactory.CreateCharacter());
                 this.AI.Add(new AI(this.MainCharacter as BaseCharacter, this.Enemies[i]));
                 CharacterType enemyType = (CharacterType)Enum.Parse(typeof(CharacterType), this.Enemies[i].GetType().Name);
                 switch (enemyType)
@@ -72,6 +73,7 @@ namespace Diablo.GUI
                         this.Animations.Add(this.Enemies[i].EnemyAnimation); break;
                 }
             }
+            ((BaseCharacter)this.MainCharacter).EnemiesToFight = this.Enemies;
 
             this.Animations.Add(this.MainCharacter.CharacterAnimation);
 
@@ -98,6 +100,14 @@ namespace Diablo.GUI
             foreach (AI ai in AI)
             {
                 ai.Action(gameTime);
+            }
+            for (int i = 0; i < this.Enemies.Count; i++)
+            {
+                var enemy = this.Enemies[i];
+                if (!((BaseCharacter)this.MainCharacter).EnemiesToFight.Contains(enemy))
+                {
+                    this.Enemies.Remove(enemy);
+                }
             }
             //this.AI.Action(gameTime);
             //foreach (AnimatedSprite animation in animations)

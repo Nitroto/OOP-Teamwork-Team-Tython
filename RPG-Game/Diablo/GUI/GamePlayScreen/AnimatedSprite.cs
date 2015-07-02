@@ -13,7 +13,7 @@ namespace Diablo.GUI.GamePLayScreen
         public Vector2 sPosition;
         protected Texture2D sTexture;
         private Rectangle[] sRectangles;
-        private int frameIndex;
+        protected int frameIndex;
         private double timeElapsed;
         private double timeToUpdate;
         protected Vector2 sDirection = Vector2.Zero;
