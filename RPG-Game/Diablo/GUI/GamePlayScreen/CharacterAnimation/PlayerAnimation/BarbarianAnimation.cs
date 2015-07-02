@@ -14,5 +14,6 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
             this.Frames = this.frames;
             this.InitializeAnimation();
         }
+
     }
 }

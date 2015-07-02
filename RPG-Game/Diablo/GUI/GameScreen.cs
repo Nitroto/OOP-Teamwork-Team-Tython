@@ -21,6 +21,7 @@ namespace Diablo.GUI
 
         public string XmlPath { get; set; }
 
+
         public virtual void LoadContent()
         {
             this.content = new ContentManager(

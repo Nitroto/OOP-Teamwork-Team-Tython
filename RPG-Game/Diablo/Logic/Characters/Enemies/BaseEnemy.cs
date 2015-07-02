@@ -33,7 +33,7 @@ namespace Diablo.Logic.Characters.Enemies
         public void Update(GameTime gameTime)
         {
             KeyboardState keyState = Keyboard.GetState();
-            this.CharacterAnimation.Update(gameTime, keyState);
+            this.CharacterAnimation.Update(gameTime);
         }
 
         public void Attack(ICharacter hero)

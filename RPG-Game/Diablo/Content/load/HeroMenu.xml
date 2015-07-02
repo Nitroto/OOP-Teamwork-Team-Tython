@@ -8,6 +8,7 @@
   <Item>
     <LinkType>Screen</LinkType>
     <LinkID>GamePlayScreen</LinkID>
+    <CharacterChoice>Barbarian</CharacterChoice>
     <Image>
       <Path>res/menu/heroMenu/barbarian.png</Path>
       <Scale>

@@ -46,7 +46,7 @@ namespace Diablo.GUI.GamePLayScreen
             }
         }
 
-        public virtual void Update(GameTime gameTime, KeyboardState keyState)
+        public virtual void Update(GameTime gameTime)
         {
             this.timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
             if (this.timeElapsed > this.timeToUpdate)

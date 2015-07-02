@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Text.RegularExpressions;
 
@@ -33,15 +32,15 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation
             this.sTexture = contentManager.Load<Texture2D>(this.ImgSource);
         }
 
-        public override void Update(GameTime gameTime, KeyboardState keyState)
+        public override void Update(GameTime gameTime)
         {
             this.sDirection = Vector2.Zero;
             
-            this.HandleAnimation(keyState);
+            this.HandleAnimation();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             this.sDirection *= characterSpeed;
             this.sPosition += (this.sDirection * deltaTime);
-            base.Update(gameTime, keyState);
+            base.Update(gameTime);
         }
 
         public void PositionAdjustment(Vector2 positionCorrection, AnimationType animType, Direction newDirection)
@@ -64,7 +63,7 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation
             }
         }
 
-        protected abstract void HandleAnimation(KeyboardState keyState);
+        protected abstract void HandleAnimation();
 
         public void RunAnimation(string command)
         {

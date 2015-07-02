@@ -47,7 +47,7 @@ namespace Diablo.Logic.Characters.Enemies
                     this.Enemy.EnemyAnimation.MoveByY(gameTime, Direction.Down);
                 }
             }
-            ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime, new KeyboardState());
+            ((AnimatedSprite)this.Enemy.EnemyAnimation).Update(gameTime);
         }
 
         private void GetCloserToHero(GameTime gameTime)

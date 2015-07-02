@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GamePlayScreen>
-  
-  
+  <CharacterChoice>Rogue</CharacterChoice>
+  <Map>
+    <Path>res/maps/map.png</Path>
+  </Map>
 </GamePlayScreen>

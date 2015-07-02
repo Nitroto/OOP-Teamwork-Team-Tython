@@ -29,13 +29,20 @@ namespace Diablo.GUI
 
         private List<AnimatedSprite> Animations { get; set; }
         private ICharacter MainCharacter { get; set; }
-
+        public string CharacterChoice { get; set; }
+        public Image Map { get; set; }
 
         public override void LoadContent()
         {
             base.LoadContent();
-
-            this.MainCharacter = new Rogue("rogue");
+            this.Map.LoadContent();
+            switch (this.CharacterChoice)
+            {
+                case "Rogue": this.MainCharacter = new Rogue("rogue"); break;
+                case "Barbarian": this.MainCharacter = new Barbarian("Barbarian"); break;
+                case "Sorcerer": this.MainCharacter = new Sorcerer("Sorcerer"); break;
+            }
+            
             //this.player = new SorcererAnimation(new Vector2(-30,-20));
             this.TestEnemy = EnemyFactory.CreateCharacter();
             this.AI = new List<AI>();
@@ -86,6 +93,7 @@ namespace Diablo.GUI
 
         public override void Update(GameTime gameTime)
         {
+            this.Map.Update(gameTime);
             this.MainCharacter.Update(gameTime);
             foreach (AI ai in AI)
             {
@@ -102,7 +110,7 @@ namespace Diablo.GUI
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            ScreenManager.Instance.GraphicsDevice.Clear(Color.CornflowerBlue);
+            this.Map.Draw(spriteBatch);
             foreach (AnimatedSprite animation in this.Animations)
             {
                 animation.Draw(spriteBatch);

@@ -16,21 +16,21 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
             this.ImgSource = @"res/characters/player/" + this.CharacterType.ToString().ToLower() + ".png";
         }
 
-        private void Move(KeyboardState keyState)
+        private void Move()
         {
-            if (keyState.IsKeyDown(Keys.W))
+            if (InputManager.Instance.KeyDown(Keys.W))
             {
-                if (keyState.IsKeyDown(Keys.A))
+                if (InputManager.Instance.KeyDown(Keys.A))
                 {
                     //move up-left
                     this.PositionAdjustment(new Vector2(-1, -1), AnimationType.MoveUpLeft, Direction.UpLeft);
                 }
-                else if (keyState.IsKeyDown(Keys.D))
+                else if (InputManager.Instance.KeyDown(Keys.D))
                 {
                     //move up-right
                     this.PositionAdjustment(new Vector2(1, -1), AnimationType.MoveUpRight, Direction.UpRight);
                 }
-                else if (keyState.IsKeyDown(Keys.S))
+                else if (InputManager.Instance.KeyDown(Keys.S))
                 {
                     //stop
                     this.sDirection += new Vector2(0, 0);
@@ -41,19 +41,19 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
                     this.PositionAdjustment(new Vector2(0, -1), AnimationType.MoveUp, Direction.Up);
                 }
             }
-            else if (keyState.IsKeyDown(Keys.S))
+            else if (InputManager.Instance.KeyDown(Keys.S))
             {
-                if (keyState.IsKeyDown(Keys.A))
+                if (InputManager.Instance.KeyDown(Keys.A))
                 {
                     //move down-left
                     this.PositionAdjustment(new Vector2(-1, 1), AnimationType.MoveDownLeft, Direction.DownLeft);
                 }
-                else if (keyState.IsKeyDown(Keys.D))
+                else if (InputManager.Instance.KeyDown(Keys.D))
                 {
                     //moce down-rigt
                     this.PositionAdjustment(new Vector2(1, 1), AnimationType.MoveDownRight, Direction.DowRight);
                 }
-                else if (keyState.IsKeyDown(Keys.W))
+                else if (InputManager.Instance.KeyDown(Keys.W))
                 {
                     //stop
                     this.sDirection += new Vector2(0, 0);
@@ -64,9 +64,9 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
                     this.PositionAdjustment(new Vector2(0, 1), AnimationType.MoveDown, Direction.Down);
                 }
             }
-            else if (keyState.IsKeyDown(Keys.A))
+            else if (InputManager.Instance.KeyDown(Keys.A))
             {
-                if (keyState.IsKeyDown(Keys.D))
+                if (InputManager.Instance.KeyDown(Keys.D))
                 {
                     //stop
                     this.sDirection += new Vector2(0, 0);
@@ -77,9 +77,9 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
                     this.PositionAdjustment(new Vector2(-1, 0), AnimationType.MoveLeft, Direction.Left);
                 }
             }
-            else if (keyState.IsKeyDown(Keys.D))
+            else if (InputManager.Instance.KeyDown(Keys.D))
             {
-                if (keyState.IsKeyDown(Keys.A))
+                if (InputManager.Instance.KeyDown(Keys.A))
                 {
                     //stop
                     this.sDirection += new Vector2(0, 0);
@@ -92,7 +92,7 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
             }
         }
 
-        protected override void HandleAnimation(KeyboardState keyState)
+        protected override void HandleAnimation()
         {
             //KeyboardState keyState = Keyboard.GetState();
             if (!dies)
@@ -101,14 +101,14 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
                 {
                     if (!attacking && !castSpell)
                     {
-                        this.Move(keyState);
+                        this.Move();
                     }
-                    if (keyState.IsKeyDown(Keys.Space))
+                    if (InputManager.Instance.KeyDown(Keys.Space))
                     {
                         this.RunAnimation("Attack");
                         this.attacking = true;
                     }
-                    else if (keyState.IsKeyDown(Keys.Up))
+                    else if (InputManager.Instance.KeyDown(Keys.Up))
                     {
                         this.RunAnimation("CastSpell");
                         this.castSpell = true;
@@ -131,11 +131,11 @@ namespace Diablo.GUI.GamePLayScreen.CharacterAnimation.PlayerAnimation
             }
 
             // To be removed
-            if (keyState.IsKeyDown(Keys.Down))
+            if (InputManager.Instance.KeyDown(Keys.Down))
             {
                 this.dies = true;
             }
-            if (keyState.IsKeyDown(Keys.Left))
+            if (InputManager.Instance.KeyDown(Keys.Left))
             {
                 this.isHitted = true;
             }

@@ -47,7 +47,7 @@ namespace Diablo.Logic.Characters.Heroes
         {
             KeyboardState keyState = Keyboard.GetState();
             this.HandleUserInput(keyState, gameTime);
-            this.CharacterAnimation.Update(gameTime, keyState);
+            this.CharacterAnimation.Update(gameTime);
             
             
             //regen mana

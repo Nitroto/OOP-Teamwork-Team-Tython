@@ -1,5 +1,4 @@
-﻿using Diablo.Logic.Characters.Heroes;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,18 +10,20 @@ namespace Diablo.GUI.GamePLayScreen.StatusBarAnimation
         protected int counter = 1;
 
 
-        protected StatusBar(Vector2 position, string imgSource)
+        protected StatusBar(Vector2 position, string imgSource, string frame)
             : base(position)
         {
             this.sRectangles = new Rectangle[50];
             this.AddFrames(50, 0, 0, 50, 50, new Vector2(0, 0));
             this.FrameToShow = new Rectangle(0, 0, 50, 50);
             this.ImgSource = imgSource;
+            this.Frame = frame;
         }
 
 
         public int MaxQuantity { get; set; }
         public string ImgSource { get; set; }
+        public string Frame { get; set; }
         public Rectangle FrameToShow { get; set; }
         public Rectangle Size { get; set; }
 

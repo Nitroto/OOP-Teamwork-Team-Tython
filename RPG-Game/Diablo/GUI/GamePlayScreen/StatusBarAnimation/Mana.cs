@@ -1,16 +1,15 @@
-﻿using Diablo.Logic.Characters.Heroes;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
 using System;
 
 namespace Diablo.GUI.GamePLayScreen.StatusBarAnimation
 {
     public class Mana : StatusBar
     {
-        private const string ImgSource = @"res/bars/mana.png";
+        private const string ManaBarImgSource = @"res/bars/mana.png";
+        private const string ManaBarFrame = @"res/bars/frame.png";
 
         public Mana(Vector2 position)
-            : base(position, ImgSource)
+            : base(position, ManaBarImgSource, ManaBarFrame)
         {
         }
 
@@ -20,7 +19,7 @@ namespace Diablo.GUI.GamePLayScreen.StatusBarAnimation
         {
             throw new NotImplementedException();
         }
-        public override void Update(GameTime gameTime, KeyboardState keyState)
+        public override void Update(GameTime gameTime)
         {
             //int mana = 150;
             //float percentage = (float)mana / (float)this.MaxQuantity;
